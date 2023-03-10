@@ -16,6 +16,12 @@ public class FeeController {
         this.responseFactory = responseFactory;
     }
 
+    /**
+     * Main API endpoint
+     * @param city city name
+     * @param vehicle vehicle name
+     * @return Message returned through REST api.
+     */
     @GetMapping
     public Message getDeliveryFee(@RequestParam String city, @RequestParam String vehicle){
         return responseFactory.getMessageFromRequest(city, vehicle);

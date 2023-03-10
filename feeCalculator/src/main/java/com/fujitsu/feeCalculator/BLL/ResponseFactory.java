@@ -31,6 +31,12 @@ public class ResponseFactory {
         this.weatherService = weatherService;
     }
 
+    /**
+     * Produces a Message object using city name and vehicle.
+     * @param city city name
+     * @param vehicle vehicle name
+     * @return Message with delivery fee or error description
+     */
     public Message getMessageFromRequest(String city, String vehicle){
         EVehicleType vehicleType = EnumLabelMapper.getVehicleFromString(vehicle);
         ECityName cityName = EnumLabelMapper.getCityNameFromString(getStationName(city));
@@ -55,14 +61,24 @@ public class ResponseFactory {
         }
         WeatherRecord weatherRecord = weatherService.getLatestWeatherRecordForCity(city);
         if(weatherRecord == null){
-            weatherRecord = requestLatestWeatherFromApi(city);
+            weatherRecord = requestLatestWeatherFromApi(city, true);
+
         }
         return weatherRecord;
     }
 
-    private WeatherRecord requestLatestWeatherFromApi(ECityName cityName){
+    /**
+     * Sends request for weather data from api. Possible to save data into db.
+     * @param cityName City name
+     * @param addToDb Toggle to add recived data to db
+     * @return latest weather record form api
+     */
+    private WeatherRecord requestLatestWeatherFromApi(ECityName cityName, boolean addToDb){
         WeatherApiService weatherApiService = new WeatherApiService();
         List<WeatherRecord> records = weatherApiService.getLatestObservations();
+        if(addToDb){
+            weatherService.saveAllWeatherRecords(records);
+        }
         System.out.println("requestLatestWeatherFromApi: " + records);
         return records
                 .stream()
