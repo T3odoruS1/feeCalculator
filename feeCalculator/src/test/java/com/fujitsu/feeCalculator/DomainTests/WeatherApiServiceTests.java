@@ -1,8 +1,8 @@
 package com.fujitsu.feeCalculator.DomainTests;
 
 import com.fujitsu.feeCalculator.Domain.WeatherRecord;
-import com.fujitsu.feeCalculator.Services.WeatherService.WeatherApiService;
-import com.fujitsu.feeCalculator.Services.WeatherService.XMLDecoder;
+import com.fujitsu.feeCalculator.Services.WeatherService.API.WeatherApiService;
+import com.fujitsu.feeCalculator.BLL.XMLDecoder;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 

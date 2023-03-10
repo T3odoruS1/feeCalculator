@@ -3,19 +3,29 @@ package com.fujitsu.feeCalculator.Domain;
 import com.fujitsu.feeCalculator.Domain.Enums.ECityName;
 import com.fujitsu.feeCalculator.Domain.Enums.EPhenomenonType;
 import com.fujitsu.feeCalculator.Domain.Helpers.EnumLabelMapper;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.UUID;
 
 
+@Entity
 public class WeatherRecord {
 
-    private final UUID id;
+    @Id
+    private UUID id;
     private Long timestamp;
-    private final ECityName cityName;
-    private final String WMOCode;
-    private final EPhenomenonType phenomenon;
-    private final Double airTemperature;
-    private final Double windSpeed;
+
+    private ECityName cityName;
+    private String WMOCode;
+    private EPhenomenonType phenomenon;
+    private Double airTemperature;
+    private Double windSpeed;
 
     public WeatherRecord(Long timestamp, String cityName, String WMOCode, String phenomenon, Double airTemperature, Double windSpeed) {
         this.id = UUID.randomUUID();
@@ -25,6 +35,34 @@ public class WeatherRecord {
         this.phenomenon = EnumLabelMapper.getPhenomenonTypeFromString(phenomenon);
         this.airTemperature = airTemperature;
         this.windSpeed = windSpeed;
+    }
+
+    public WeatherRecord() {
+
+    }
+
+    public UUID getId() {
+        return id;
+    }
+
+    public Long getTimestamp() {
+        return timestamp;
+    }
+
+    public ECityName getCityName() {
+        return cityName;
+    }
+
+    public EPhenomenonType getPhenomenon() {
+        return phenomenon;
+    }
+
+    public Double getWindSpeed() {
+        return windSpeed;
+    }
+
+    public Double getAirTemperature() {
+        return airTemperature;
     }
 
     public String toString() {

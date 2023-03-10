@@ -1,0 +1,126 @@
+2023-03-09 14:26:50 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "WEATHER_RECORD" not found (this database is empty); SQL statement:
+select w1_0.id,w1_0.wmocode,w1_0.air_temperature,w1_0.city_name,w1_0.phenomenon,w1_0.timestamp,w1_0.wind_speed from weather_record w1_0 where w1_0.id=? [42104-214]
+2023-03-09 14:26:55 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "WEATHER_RECORD" not found (this database is empty); SQL statement:
+select w1_0.id,w1_0.wmocode,w1_0.air_temperature,w1_0.city_name,w1_0.phenomenon,w1_0.timestamp,w1_0.wind_speed from weather_record w1_0 where w1_0.id=? [42104-214]
+2023-03-09 14:27:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "WEATHER_RECORD" not found (this database is empty); SQL statement:
+select w1_0.id,w1_0.wmocode,w1_0.air_temperature,w1_0.city_name,w1_0.phenomenon,w1_0.timestamp,w1_0.wind_speed from weather_record w1_0 where w1_0.id=? [42104-214]
+2023-03-09 14:27:05 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "WEATHER_RECORD" not found (this database is empty); SQL statement:
+select w1_0.id,w1_0.wmocode,w1_0.air_temperature,w1_0.city_name,w1_0.phenomenon,w1_0.timestamp,w1_0.wind_speed from weather_record w1_0 where w1_0.id=? [42104-214]
+2023-03-09 14:27:10 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "WEATHER_RECORD" not found (this database is empty); SQL statement:
+select w1_0.id,w1_0.wmocode,w1_0.air_temperature,w1_0.city_name,w1_0.phenomenon,w1_0.timestamp,w1_0.wind_speed from weather_record w1_0 where w1_0.id=? [42104-214]
+2023-03-09 14:27:15 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "WEATHER_RECORD" not found (this database is empty); SQL statement:
+select w1_0.id,w1_0.wmocode,w1_0.air_temperature,w1_0.city_name,w1_0.phenomenon,w1_0.timestamp,w1_0.wind_speed from weather_record w1_0 where w1_0.id=? [42104-214]
+2023-03-09 14:27:20 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "WEATHER_RECORD" not found (this database is empty); SQL statement:
+select w1_0.id,w1_0.wmocode,w1_0.air_temperature,w1_0.city_name,w1_0.phenomenon,w1_0.timestamp,w1_0.wind_speed from weather_record w1_0 where w1_0.id=? [42104-214]
+2023-03-09 14:27:25 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "WEATHER_RECORD" not found (this database is empty); SQL statement:
+select w1_0.id,w1_0.wmocode,w1_0.air_temperature,w1_0.city_name,w1_0.phenomenon,w1_0.timestamp,w1_0.wind_speed from weather_record w1_0 where w1_0.id=? [42104-214]
+2023-03-09 14:27:30 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "WEATHER_RECORD" not found (this database is empty); SQL statement:
+select w1_0.id,w1_0.wmocode,w1_0.air_temperature,w1_0.city_name,w1_0.phenomenon,w1_0.timestamp,w1_0.wind_speed from weather_record w1_0 where w1_0.id=? [42104-214]
+2023-03-09 14:27:35 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "WEATHER_RECORD" not found (this database is empty); SQL statement:
+select w1_0.id,w1_0.wmocode,w1_0.air_temperature,w1_0.city_name,w1_0.phenomenon,w1_0.timestamp,w1_0.wind_speed from weather_record w1_0 where w1_0.id=? [42104-214]
+2023-03-09 14:27:40 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "WEATHER_RECORD" not found (this database is empty); SQL statement:
+select w1_0.id,w1_0.wmocode,w1_0.air_temperature,w1_0.city_name,w1_0.phenomenon,w1_0.timestamp,w1_0.wind_speed from weather_record w1_0 where w1_0.id=? [42104-214]
+2023-03-09 14:27:45 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "WEATHER_RECORD" not found (this database is empty); SQL statement:
+select w1_0.id,w1_0.wmocode,w1_0.air_temperature,w1_0.city_name,w1_0.phenomenon,w1_0.timestamp,w1_0.wind_speed from weather_record w1_0 where w1_0.id=? [42104-214]
+2023-03-09 14:27:50 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "WEATHER_RECORD" not found (this database is empty); SQL statement:
+select w1_0.id,w1_0.wmocode,w1_0.air_temperature,w1_0.city_name,w1_0.phenomenon,w1_0.timestamp,w1_0.wind_speed from weather_record w1_0 where w1_0.id=? [42104-214]
+2023-03-09 14:27:55 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "WEATHER_RECORD" not found (this database is empty); SQL statement:
+select w1_0.id,w1_0.wmocode,w1_0.air_temperature,w1_0.city_name,w1_0.phenomenon,w1_0.timestamp,w1_0.wind_speed from weather_record w1_0 where w1_0.id=? [42104-214]
+2023-03-09 14:28:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "WEATHER_RECORD" not found (this database is empty); SQL statement:
+select w1_0.id,w1_0.wmocode,w1_0.air_temperature,w1_0.city_name,w1_0.phenomenon,w1_0.timestamp,w1_0.wind_speed from weather_record w1_0 where w1_0.id=? [42104-214]
+2023-03-09 14:28:05 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "WEATHER_RECORD" not found (this database is empty); SQL statement:
+select w1_0.id,w1_0.wmocode,w1_0.air_temperature,w1_0.city_name,w1_0.phenomenon,w1_0.timestamp,w1_0.wind_speed from weather_record w1_0 where w1_0.id=? [42104-214]
+2023-03-09 14:28:10 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "WEATHER_RECORD" not found (this database is empty); SQL statement:
+select w1_0.id,w1_0.wmocode,w1_0.air_temperature,w1_0.city_name,w1_0.phenomenon,w1_0.timestamp,w1_0.wind_speed from weather_record w1_0 where w1_0.id=? [42104-214]
+2023-03-09 14:28:15 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "WEATHER_RECORD" not found (this database is empty); SQL statement:
+select w1_0.id,w1_0.wmocode,w1_0.air_temperature,w1_0.city_name,w1_0.phenomenon,w1_0.timestamp,w1_0.wind_speed from weather_record w1_0 where w1_0.id=? [42104-214]
+2023-03-09 14:28:20 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "WEATHER_RECORD" not found (this database is empty); SQL statement:
+select w1_0.id,w1_0.wmocode,w1_0.air_temperature,w1_0.city_name,w1_0.phenomenon,w1_0.timestamp,w1_0.wind_speed from weather_record w1_0 where w1_0.id=? [42104-214]
+2023-03-09 14:28:25 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "WEATHER_RECORD" not found (this database is empty); SQL statement:
+select w1_0.id,w1_0.wmocode,w1_0.air_temperature,w1_0.city_name,w1_0.phenomenon,w1_0.timestamp,w1_0.wind_speed from weather_record w1_0 where w1_0.id=? [42104-214]
+2023-03-09 14:28:30 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "WEATHER_RECORD" not found (this database is empty); SQL statement:
+select w1_0.id,w1_0.wmocode,w1_0.air_temperature,w1_0.city_name,w1_0.phenomenon,w1_0.timestamp,w1_0.wind_speed from weather_record w1_0 where w1_0.id=? [42104-214]
+2023-03-09 14:28:35 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "WEATHER_RECORD" not found (this database is empty); SQL statement:
+select w1_0.id,w1_0.wmocode,w1_0.air_temperature,w1_0.city_name,w1_0.phenomenon,w1_0.timestamp,w1_0.wind_speed from weather_record w1_0 where w1_0.id=? [42104-214]
+2023-03-09 14:28:40 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "WEATHER_RECORD" not found (this database is empty); SQL statement:
+select w1_0.id,w1_0.wmocode,w1_0.air_temperature,w1_0.city_name,w1_0.phenomenon,w1_0.timestamp,w1_0.wind_speed from weather_record w1_0 where w1_0.id=? [42104-214]
+2023-03-09 14:28:45 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "WEATHER_RECORD" not found (this database is empty); SQL statement:
+select w1_0.id,w1_0.wmocode,w1_0.air_temperature,w1_0.city_name,w1_0.phenomenon,w1_0.timestamp,w1_0.wind_speed from weather_record w1_0 where w1_0.id=? [42104-214]
+2023-03-09 14:28:50 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "WEATHER_RECORD" not found (this database is empty); SQL statement:
+select w1_0.id,w1_0.wmocode,w1_0.air_temperature,w1_0.city_name,w1_0.phenomenon,w1_0.timestamp,w1_0.wind_speed from weather_record w1_0 where w1_0.id=? [42104-214]
+2023-03-09 14:28:55 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "WEATHER_RECORD" not found (this database is empty); SQL statement:
+select w1_0.id,w1_0.wmocode,w1_0.air_temperature,w1_0.city_name,w1_0.phenomenon,w1_0.timestamp,w1_0.wind_speed from weather_record w1_0 where w1_0.id=? [42104-214]
+2023-03-09 14:29:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "WEATHER_RECORD" not found (this database is empty); SQL statement:
+select w1_0.id,w1_0.wmocode,w1_0.air_temperature,w1_0.city_name,w1_0.phenomenon,w1_0.timestamp,w1_0.wind_speed from weather_record w1_0 where w1_0.id=? [42104-214]
+2023-03-09 14:29:05 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "WEATHER_RECORD" not found (this database is empty); SQL statement:
+select w1_0.id,w1_0.wmocode,w1_0.air_temperature,w1_0.city_name,w1_0.phenomenon,w1_0.timestamp,w1_0.wind_speed from weather_record w1_0 where w1_0.id=? [42104-214]
+2023-03-09 14:29:10 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "WEATHER_RECORD" not found (this database is empty); SQL statement:
+select w1_0.id,w1_0.wmocode,w1_0.air_temperature,w1_0.city_name,w1_0.phenomenon,w1_0.timestamp,w1_0.wind_speed from weather_record w1_0 where w1_0.id=? [42104-214]
+2023-03-09 14:29:15 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "WEATHER_RECORD" not found (this database is empty); SQL statement:
+select w1_0.id,w1_0.wmocode,w1_0.air_temperature,w1_0.city_name,w1_0.phenomenon,w1_0.timestamp,w1_0.wind_speed from weather_record w1_0 where w1_0.id=? [42104-214]
+2023-03-09 14:29:20 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "WEATHER_RECORD" not found (this database is empty); SQL statement:
+select w1_0.id,w1_0.wmocode,w1_0.air_temperature,w1_0.city_name,w1_0.phenomenon,w1_0.timestamp,w1_0.wind_speed from weather_record w1_0 where w1_0.id=? [42104-214]
+2023-03-09 14:29:25 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "WEATHER_RECORD" not found (this database is empty); SQL statement:
+select w1_0.id,w1_0.wmocode,w1_0.air_temperature,w1_0.city_name,w1_0.phenomenon,w1_0.timestamp,w1_0.wind_speed from weather_record w1_0 where w1_0.id=? [42104-214]
+2023-03-09 14:29:30 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "WEATHER_RECORD" not found (this database is empty); SQL statement:
+select w1_0.id,w1_0.wmocode,w1_0.air_temperature,w1_0.city_name,w1_0.phenomenon,w1_0.timestamp,w1_0.wind_speed from weather_record w1_0 where w1_0.id=? [42104-214]
+2023-03-09 14:29:35 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "WEATHER_RECORD" not found (this database is empty); SQL statement:
+select w1_0.id,w1_0.wmocode,w1_0.air_temperature,w1_0.city_name,w1_0.phenomenon,w1_0.timestamp,w1_0.wind_speed from weather_record w1_0 where w1_0.id=? [42104-214]
+2023-03-09 14:29:40 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "WEATHER_RECORD" not found (this database is empty); SQL statement:
+select w1_0.id,w1_0.wmocode,w1_0.air_temperature,w1_0.city_name,w1_0.phenomenon,w1_0.timestamp,w1_0.wind_speed from weather_record w1_0 where w1_0.id=? [42104-214]
+2023-03-09 14:29:45 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "WEATHER_RECORD" not found (this database is empty); SQL statement:
+select w1_0.id,w1_0.wmocode,w1_0.air_temperature,w1_0.city_name,w1_0.phenomenon,w1_0.timestamp,w1_0.wind_speed from weather_record w1_0 where w1_0.id=? [42104-214]
+2023-03-09 14:29:50 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "WEATHER_RECORD" not found (this database is empty); SQL statement:
+select w1_0.id,w1_0.wmocode,w1_0.air_temperature,w1_0.city_name,w1_0.phenomenon,w1_0.timestamp,w1_0.wind_speed from weather_record w1_0 where w1_0.id=? [42104-214]
+2023-03-09 14:29:55 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "WEATHER_RECORD" not found (this database is empty); SQL statement:
+select w1_0.id,w1_0.wmocode,w1_0.air_temperature,w1_0.city_name,w1_0.phenomenon,w1_0.timestamp,w1_0.wind_speed from weather_record w1_0 where w1_0.id=? [42104-214]
+2023-03-09 14:30:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "WEATHER_RECORD" not found (this database is empty); SQL statement:
+select w1_0.id,w1_0.wmocode,w1_0.air_temperature,w1_0.city_name,w1_0.phenomenon,w1_0.timestamp,w1_0.wind_speed from weather_record w1_0 where w1_0.id=? [42104-214]
+2023-03-09 14:30:05 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "WEATHER_RECORD" not found (this database is empty); SQL statement:
+select w1_0.id,w1_0.wmocode,w1_0.air_temperature,w1_0.city_name,w1_0.phenomenon,w1_0.timestamp,w1_0.wind_speed from weather_record w1_0 where w1_0.id=? [42104-214]
+2023-03-09 14:30:10 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "WEATHER_RECORD" not found (this database is empty); SQL statement:
+select w1_0.id,w1_0.wmocode,w1_0.air_temperature,w1_0.city_name,w1_0.phenomenon,w1_0.timestamp,w1_0.wind_speed from weather_record w1_0 where w1_0.id=? [42104-214]
+2023-03-09 14:30:20 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "WEATHER_RECORD" not found (this database is empty); SQL statement:
+select w1_0.record_id,w1_0.wmocode,w1_0.air_temperature,w1_0.city_name,w1_0.phenomenon,w1_0.timestamp,w1_0.wind_speed from weather_record w1_0 where w1_0.record_id=? [42104-214]

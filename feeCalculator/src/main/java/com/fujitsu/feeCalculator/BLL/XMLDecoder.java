@@ -1,4 +1,4 @@
-package com.fujitsu.feeCalculator.Services.WeatherService;
+package com.fujitsu.feeCalculator.BLL;
 
 
 import com.fujitsu.feeCalculator.Domain.Enums.ECityName;
@@ -17,7 +17,7 @@ import java.util.List;
 
 public class XMLDecoder {
 
-    private final List<String> RELEVANT_STATIONS = getRELEVANT_STATIONS();
+    private final List<String> RELEVANT_STATIONS = getRelevantStations();
 
 
     public List<WeatherRecord> decodeStringIntoWeatherRecord(String inputData){
@@ -89,7 +89,7 @@ public class XMLDecoder {
         }
     }
 
-    private List<String> getRELEVANT_STATIONS(){
+    private List<String> getRelevantStations(){
         return Arrays.stream(ECityName.values())
                 .map(ECityName::getLabel)
                 .toList();

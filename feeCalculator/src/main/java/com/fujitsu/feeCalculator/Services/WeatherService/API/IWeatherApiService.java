@@ -1,4 +1,4 @@
-package com.fujitsu.feeCalculator.Services.WeatherService;
+package com.fujitsu.feeCalculator.Services.WeatherService.API;
 
 import com.fujitsu.feeCalculator.Domain.WeatherRecord;
 

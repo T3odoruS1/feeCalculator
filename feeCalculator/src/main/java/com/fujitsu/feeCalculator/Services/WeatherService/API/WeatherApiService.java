@@ -1,5 +1,6 @@
-package com.fujitsu.feeCalculator.Services.WeatherService;
+package com.fujitsu.feeCalculator.Services.WeatherService.API;
 import com.fujitsu.feeCalculator.Domain.WeatherRecord;
+import com.fujitsu.feeCalculator.BLL.XMLDecoder;
 import org.springframework.stereotype.Service;
 
 import java.io.BufferedReader;
@@ -57,7 +58,9 @@ public class WeatherApiService implements IWeatherApiService {
         try{
             String xml = preformRequest();
             XMLDecoder decoder = new XMLDecoder();
-            return decoder.decodeStringIntoWeatherRecord(xml);
+            List<WeatherRecord> records = decoder.decodeStringIntoWeatherRecord(xml);
+            System.out.println(records);
+            return records;
         }catch (Exception e){
             System.out.println(e.toString());
         }

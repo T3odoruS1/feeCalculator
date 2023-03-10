@@ -1,0 +1,3 @@
+2023-03-09 14:42:10 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "WEATHER_RECORD" not found (this database is empty); SQL statement:
+select w1_0.id,w1_0.wmocode,w1_0.air_temperature,w1_0.city_name,w1_0.phenomenon,w1_0.timestamp,w1_0.wind_speed from weather_record w1_0 where w1_0.id=? [42104-214]
