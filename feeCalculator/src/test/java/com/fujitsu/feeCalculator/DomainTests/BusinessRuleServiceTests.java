@@ -20,6 +20,7 @@ import java.util.HashMap;
 public class BusinessRuleServiceTests {
 
     private final BusinessRuleService service;
+    private final Helpers helpers = new Helpers();
 
     private HashMap<EVehicleType, Double>  map = new HashMap<>(){{
         put(EVehicleType.CAR, 5.5);
@@ -39,6 +40,7 @@ public class BusinessRuleServiceTests {
 
     @Test
     public void testServiceCanSaveAndDeletePhenomenon(){
+        helpers.ensureEmptyDb(service);
         PhenomenonBusinessRule phenomenonBusinessRule = new PhenomenonBusinessRule(EPhenomenonType.GLAZE, map);
         service.savePhenomenonBusinessRule(phenomenonBusinessRule);
         PhenomenonBusinessRule fromDb = service.getPhenomenonBusinessRule(EPhenomenonType.GLAZE);
@@ -49,6 +51,7 @@ public class BusinessRuleServiceTests {
 
     @Test
     public void testSeviceCanAddAndDeleteBaseFee(){
+        helpers.ensureEmptyDb(service);
         RegionalBaseFeeBusinessRule rule = new RegionalBaseFeeBusinessRule(ECityName.TALLINN, map);
         service.saveRegionalBaseFeeBusinessRule(rule);
         Assertions.assertEquals(rule, service.getRegionalBaseFeeBusinessRule(ECityName.TALLINN));
@@ -61,16 +64,19 @@ public class BusinessRuleServiceTests {
 
     @Test
     public void testSeviceCanAddAndDeleteValueRange(){
-        ValueRangeBusinessRule rule = new ValueRangeBusinessRule(-9.0, 1.0, EValueUnit.WIND_SPEED, map);
+        helpers.ensureEmptyDb(service);
+
+        ValueRangeBusinessRule rule = new ValueRangeBusinessRule(-9.0, 1.0, EValueUnit.TEMPERATURE, map);
         service.saveValueRangeBusinessRule(rule);
-        Assertions.assertEquals(rule, service.getValueRangeBusinessRule(-5.0, EValueUnit.WIND_SPEED));
+        Assertions.assertEquals(rule, service.getValueRangeBusinessRule(-5.0, EValueUnit.TEMPERATURE));
         service.deleteValueRangeBusinessRule(rule.getId());
-        Assertions.assertNull(service.getValueRangeBusinessRule(-5.0, EValueUnit.WIND_SPEED));
+        Assertions.assertNull(service.getValueRangeBusinessRule(-5.0, EValueUnit.TEMPERATURE));
     }
 
 
     @Test
     public void testServiceThrowsWhenPhenomenonOverlapping(){
+        helpers.ensureEmptyDb(service);
 
         PhenomenonBusinessRule phenomenonBusinessRule = new PhenomenonBusinessRule(EPhenomenonType.GLAZE, map);
         PhenomenonBusinessRule phenomenonBusinessRule2 = new PhenomenonBusinessRule(EPhenomenonType.GLAZE, map2);
@@ -84,6 +90,8 @@ public class BusinessRuleServiceTests {
 
     @Test
     public void testServiceThrowsWhenBaseOverlapping(){
+        helpers.ensureEmptyDb(service);
+
         RegionalBaseFeeBusinessRule rule = new RegionalBaseFeeBusinessRule(ECityName.TALLINN, map);
         RegionalBaseFeeBusinessRule rule2 = new RegionalBaseFeeBusinessRule(ECityName.TALLINN, map2);
         service.saveRegionalBaseFeeBusinessRule(rule);
@@ -96,11 +104,13 @@ public class BusinessRuleServiceTests {
 
     @Test
     public void testServiceThrowsWhenRangeOverlapping(){
-        ValueRangeBusinessRule rule = new ValueRangeBusinessRule(-9.0, 1.0, EValueUnit.WIND_SPEED, map);
-        ValueRangeBusinessRule rule2 = new ValueRangeBusinessRule(1.0, 2.0, EValueUnit.WIND_SPEED, map);
-        ValueRangeBusinessRule rule3 = new ValueRangeBusinessRule(-15.0, -8.0, EValueUnit.WIND_SPEED, map);
-        ValueRangeBusinessRule rule4 = new ValueRangeBusinessRule(-900.0, -9.0, EValueUnit.WIND_SPEED, map);
-        ValueRangeBusinessRule rule5 = new ValueRangeBusinessRule(-9.0, 1.0, EValueUnit.TEMPERATURE, map);
+        helpers.ensureEmptyDb(service);
+
+        ValueRangeBusinessRule rule = new ValueRangeBusinessRule(-9.0, 1.0, EValueUnit.TEMPERATURE, map);
+        ValueRangeBusinessRule rule2 = new ValueRangeBusinessRule(1.0, 2.0, EValueUnit.TEMPERATURE, map);
+        ValueRangeBusinessRule rule3 = new ValueRangeBusinessRule(-15.0, -8.0, EValueUnit.TEMPERATURE, map);
+        ValueRangeBusinessRule rule4 = new ValueRangeBusinessRule(-900.0, -9.0, EValueUnit.TEMPERATURE, map);
+        ValueRangeBusinessRule rule5 = new ValueRangeBusinessRule(1.0, 2.0, EValueUnit.WIND_SPEED, map);
 
         service.saveValueRangeBusinessRule(rule);
         service.saveValueRangeBusinessRule(rule2);
@@ -117,6 +127,8 @@ public class BusinessRuleServiceTests {
 
     @Test
     public void testServiceUpdatePhenomenon(){
+        helpers.ensureEmptyDb(service);
+
         PhenomenonBusinessRule phenomenonBusinessRule = new PhenomenonBusinessRule(EPhenomenonType.GLAZE, map);
         service.savePhenomenonBusinessRule(phenomenonBusinessRule);
         phenomenonBusinessRule = service.getPhenomenonBusinessRule(EPhenomenonType.GLAZE);
@@ -128,6 +140,8 @@ public class BusinessRuleServiceTests {
 
     @Test
     public void testServiceUpdateBaseFee(){
+        helpers.ensureEmptyDb(service);
+
         RegionalBaseFeeBusinessRule rule = new RegionalBaseFeeBusinessRule(ECityName.TALLINN, map);
         service.saveRegionalBaseFeeBusinessRule(rule);
         rule = service.getRegionalBaseFeeBusinessRule(ECityName.TALLINN);
@@ -141,7 +155,9 @@ public class BusinessRuleServiceTests {
 
     @Test
     public void testServiceRangeUpdate(){
-        ValueRangeBusinessRule rule = new ValueRangeBusinessRule(-9.0, 1.0, EValueUnit.WIND_SPEED, map);
+        helpers.ensureEmptyDb(service);
+
+        ValueRangeBusinessRule rule = new ValueRangeBusinessRule(-9.0, 1.0, EValueUnit.TEMPERATURE, map);
         service.saveValueRangeBusinessRule(rule);
         rule.setMinValue(-15);
         service.updateValueRangeBusinessRule(rule);
@@ -151,8 +167,10 @@ public class BusinessRuleServiceTests {
 
     @Test
     public void cannotUpdateRangeToOverlap(){
-        ValueRangeBusinessRule rule = new ValueRangeBusinessRule(-9.0, 1.0, EValueUnit.WIND_SPEED, map);
-        ValueRangeBusinessRule rule2 = new ValueRangeBusinessRule(1.0, 5.0, EValueUnit.WIND_SPEED, map);
+        helpers.ensureEmptyDb(service);
+
+        ValueRangeBusinessRule rule = new ValueRangeBusinessRule(-9.0, 1.0, EValueUnit.TEMPERATURE, map);
+        ValueRangeBusinessRule rule2 = new ValueRangeBusinessRule(1.0, 5.0, EValueUnit.TEMPERATURE, map);
         service.saveValueRangeBusinessRule(rule);
         service.saveValueRangeBusinessRule(rule2);
         rule.setMaxValue(2.0);
@@ -164,8 +182,10 @@ public class BusinessRuleServiceTests {
 
     @Test
     public void cannotUpdateUsingObjectsWithOtherId(){
-        ValueRangeBusinessRule rule = new ValueRangeBusinessRule(-9.0, 1.0, EValueUnit.WIND_SPEED, map);
-        ValueRangeBusinessRule rule2 = new ValueRangeBusinessRule(-9.0, 1.0, EValueUnit.WIND_SPEED, map2);
+        helpers.ensureEmptyDb(service);
+
+        ValueRangeBusinessRule rule = new ValueRangeBusinessRule(-9.0, 1.0, EValueUnit.TEMPERATURE, map);
+        ValueRangeBusinessRule rule2 = new ValueRangeBusinessRule(-9.0, 1.0, EValueUnit.TEMPERATURE, map2);
         service.saveValueRangeBusinessRule(rule);
         Assertions.assertThrows(RuntimeException.class,
                 () -> service.updateValueRangeBusinessRule(rule2));
@@ -185,8 +205,19 @@ public class BusinessRuleServiceTests {
         Assertions.assertThrows(RuntimeException.class,
                 () -> service.updatePhenomenonBusinessRule(phenomenonBusinessRule2));
         service.deletePhenomenonBusinessRule(phenomenonBusinessRule.getId());
+    }
 
+    @Test
+    public void testRangeValuesQueries(){
+        helpers.ensureEmptyDb(service);
 
+        ValueRangeBusinessRule ruleWind = new ValueRangeBusinessRule(5.0, 15.0, EValueUnit.WIND_SPEED, map);
+        ValueRangeBusinessRule ruleTemp = new ValueRangeBusinessRule(12.0, 17.0, EValueUnit.TEMPERATURE, map2);
+
+        service.saveValueRangeBusinessRule(ruleWind);
+        service.saveValueRangeBusinessRule(ruleTemp);
+        Assertions.assertEquals(ruleWind, service.getValueRangeBusinessRule(7.0, EValueUnit.WIND_SPEED));
+        Assertions.assertEquals(ruleTemp, service.getValueRangeBusinessRule(15.0, EValueUnit.TEMPERATURE));
 
     }
 

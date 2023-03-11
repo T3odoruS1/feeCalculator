@@ -31,7 +31,7 @@ public class ValueRangeBusinessRule implements IBusinessRule {
                                   HashMap<EVehicleType, Double> vehicleFeeData) {
 
 
-        validateMinMaxValues(minValue, maxValue);
+        validateMinMaxValues(minValue, maxValue, valueUnit);
         this.minValue = minValue;
         this.maxValue = maxValue;
 
@@ -55,8 +55,14 @@ public class ValueRangeBusinessRule implements IBusinessRule {
         return getDeserializedVehicleFeeData().get(vehicleType);
     }
 
-    public boolean checkIfValueInRange(double value){
+
+    public boolean checkIfValueInRange(Double value){
         return minValue < value && maxValue > value;
+    }
+
+    // Including min
+    public boolean checkIfValueInRangeMinInclusive(Double value){
+        return minValue <= value && maxValue > value;
     }
 
     public EValueUnit getValueUnit() {
@@ -76,13 +82,13 @@ public class ValueRangeBusinessRule implements IBusinessRule {
     }
 
     public void setMaxValue(double maxValue) {
-        validateMinMaxValues(minValue, maxValue);
+        validateMinMaxValues(minValue, maxValue, valueUnit);
 
         this.maxValue = maxValue;
     }
 
     public void setMinValue(double minValue) {
-        validateMinMaxValues(minValue, maxValue);
+        validateMinMaxValues(minValue, maxValue, valueUnit);
         this.minValue = minValue;
     }
 
@@ -91,9 +97,12 @@ public class ValueRangeBusinessRule implements IBusinessRule {
         this.vehicleFeeData = serializator.serializeHashMapToString(vehicleFeeData);
     }
 
-    private void validateMinMaxValues(Double min, Double max){
+    private void validateMinMaxValues(Double min, Double max, EValueUnit valueUnit){
         if(min > max){
             throw new InvalidValueRangeConfiguration();
+        }
+        if(valueUnit.equals(EValueUnit.WIND_SPEED) && min < 0.0){
+            throw  new InvalidValueRangeConfiguration();
         }
     }
 

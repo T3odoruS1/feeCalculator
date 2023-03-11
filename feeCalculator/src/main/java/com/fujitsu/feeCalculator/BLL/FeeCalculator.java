@@ -1,6 +1,7 @@
 package com.fujitsu.feeCalculator.BLL;
 
 import com.fujitsu.feeCalculator.Domain.*;
+import com.fujitsu.feeCalculator.Domain.Enums.EValueUnit;
 import com.fujitsu.feeCalculator.Domain.Enums.EVehicleType;
 import com.fujitsu.feeCalculator.Domain.Interfaces.IFixedValueBusinessRule;
 import com.fujitsu.feeCalculator.Services.WeatherService.Database.BusinessRuleService;
@@ -25,9 +26,9 @@ public class FeeCalculator {
 
         Double RBF = getBaseFeeOrDefault(weatherRecord, vehicleType);
         System.out.println(RBF + " RBF");
-        Double ATEF = getDefaultAdditionalTemperatureFee(weatherRecord, vehicleType);
+        Double ATEF = getAdditionalRangeValueFee(weatherRecord, vehicleType, EValueUnit.TEMPERATURE);
         System.out.println(ATEF + " ATEF");
-        Double WSEF = getDefaultAdditionalWindFee(weatherRecord, vehicleType);
+        Double WSEF = getAdditionalRangeValueFee(weatherRecord, vehicleType, EValueUnit.WIND_SPEED);
         System.out.println(WSEF + " WSEF");
         Double WPEF = getPhenomenonFeeOrDefault(weatherRecord, vehicleType);
         System.out.println(WPEF + " WPEF");
@@ -73,9 +74,27 @@ public class FeeCalculator {
                 .getBaseFee(vehicleType);
     }
 
+    private Double getAdditionalRangeValueFee(WeatherRecord weatherRecord, EVehicleType vehicleType, EValueUnit valueUnit){
+        ValueRangeBusinessRule rangeBusinessRule = businessRuleService
+                .getValueRangeBusinessRule(getCorrectUnitsFromWeatherRecord(weatherRecord, valueUnit), valueUnit);
+        if(rangeBusinessRule != null){
+            System.out.println("Range rule: " + rangeBusinessRule);
+            return rangeBusinessRule.getAdditionalFee(vehicleType);
+        }
+
+        return valueUnit.equals(EValueUnit.WIND_SPEED) ?
+                getDefaultAdditionalWindFee(weatherRecord, vehicleType) :
+                getDefaultAdditionalTemperatureFee(weatherRecord, vehicleType);
+    }
+
+    private Double getCorrectUnitsFromWeatherRecord(WeatherRecord weatherRecord, EValueUnit valueUnit){
+        return valueUnit.equals(EValueUnit.TEMPERATURE) ?
+                weatherRecord.getAirTemperature() : weatherRecord.getWindSpeed();
+    }
+
     private Double getDefaultAdditionalWindFee(WeatherRecord weatherRecord, EVehicleType vehicleType){
         if(vehicleType.equals(EVehicleType.BIKE)){
-            if(weatherRecord.getWindSpeed() < 20.0 && weatherRecord.getWindSpeed() > 10.0){
+            if(weatherRecord.getWindSpeed() <= 20.0 && weatherRecord.getWindSpeed() > 10.0){
                 return 0.5;
             }
             if(weatherRecord.getWindSpeed() > 20.0){
@@ -87,10 +106,10 @@ public class FeeCalculator {
 
     private Double getDefaultAdditionalTemperatureFee(WeatherRecord weatherRecord, EVehicleType vehicleType){
         if(vehicleType.equals(EVehicleType.BIKE) || vehicleType.equals(EVehicleType.SCOOTER)){
-            if(weatherRecord.getAirTemperature() < -10.0){
+            if(weatherRecord.getAirTemperature() <= -10.0){
                 return 1.0;
             }
-            if(weatherRecord.getAirTemperature() > -10 && weatherRecord.getAirTemperature() < 0.0){
+            if(weatherRecord.getAirTemperature() > -10 && weatherRecord.getAirTemperature() <= 0.0){
                 return 0.5;
             }
         }

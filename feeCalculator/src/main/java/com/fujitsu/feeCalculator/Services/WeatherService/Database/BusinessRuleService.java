@@ -174,7 +174,8 @@ public class BusinessRuleService implements IBusinessRuleService{
     public ValueRangeBusinessRule getValueRangeBusinessRule(Double valueInRange, EValueUnit valueUnit) {
         return getAllValueRangeBusinessRules(valueUnit)
                 .stream()
-                .filter(r -> r.checkIfValueInRange(valueInRange))
+                .filter(r -> r.checkIfValueInRangeMinInclusive(valueInRange))
+                .filter(r -> r.getValueUnit().equals(valueUnit))
                 .findFirst()
                 .orElse(null);
     }
