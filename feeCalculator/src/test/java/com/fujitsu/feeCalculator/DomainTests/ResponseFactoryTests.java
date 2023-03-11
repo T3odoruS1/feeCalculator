@@ -3,6 +3,7 @@ package com.fujitsu.feeCalculator.DomainTests;
 import com.fujitsu.feeCalculator.BLL.ResponseFactory;
 import com.fujitsu.feeCalculator.Domain.WeatherRecord;
 import com.fujitsu.feeCalculator.Services.WeatherService.Database.WeatherService;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -39,6 +40,7 @@ public class ResponseFactoryTests {
                 40.1
         );
 
+        // TODO -- run tests
 
     }
 

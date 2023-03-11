@@ -3,6 +3,8 @@ package com.fujitsu.feeCalculator.DomainTests;
 import com.fujitsu.feeCalculator.Domain.Enums.ECityName;
 import com.fujitsu.feeCalculator.Domain.Enums.EPhenomenonType;
 import com.fujitsu.feeCalculator.Domain.Helpers.EnumLabelMapper;
+import com.fujitsu.feeCalculator.Exceptions.CityNotFoundException;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -45,12 +47,12 @@ public class DomainTests {
         ECityName expected1 = EnumLabelMapper.getCityNameFromString("Tallinn-Harku");
         ECityName expected2 = EnumLabelMapper.getCityNameFromString("Tartu-Tõravere");
         ECityName expected3 = EnumLabelMapper.getCityNameFromString("Pärnu");
-        ECityName expected4 = EnumLabelMapper.getCityNameFromString("");
+        Assertions.assertThrows(CityNotFoundException.class , () -> EnumLabelMapper.getCityNameFromString(""));
 
         assert(expected1).equals(ECityName.TALLINN);
         assert(expected2).equals(ECityName.TARTU);
         assert(expected3).equals(ECityName.PARNU);
-        assert (expected4) == null;
+
 
     }
 

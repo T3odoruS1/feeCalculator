@@ -1,5 +1,6 @@
 package com.fujitsu.feeCalculator.REST;
 
+import com.fujitsu.feeCalculator.Exceptions.BusinessRuleAlreadyImplementedException;
 import com.fujitsu.feeCalculator.Exceptions.CityNotFoundException;
 import com.fujitsu.feeCalculator.Exceptions.VehicleNotFoundException;
 import com.fujitsu.feeCalculator.REST.DataClasses.CustomErrorResponse;
@@ -17,7 +18,8 @@ public class ErrorController extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler({
             CityNotFoundException.class,
-            VehicleNotFoundException.class
+            VehicleNotFoundException.class,
+            BusinessRuleAlreadyImplementedException.class
     })
     public ResponseEntity<CustomErrorResponse> customHandleNotFound(Exception ex, WebRequest request) {
 

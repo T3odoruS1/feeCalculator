@@ -13,6 +13,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 
+import java.util.Date;
 import java.util.List;
 
 @SpringBootApplication
@@ -40,6 +41,7 @@ public class FeeCalculatorApplication {
     @Scheduled(cron = "${app.cronExpression}")
     void someJob() {
 //        System.out.println("cron job");
+        System.out.println(new Date());
         WeatherApiService service = new WeatherApiService();
         List<WeatherRecord> records = service.getLatestObservations();
         weatherService.saveAllWeatherRecords(records);

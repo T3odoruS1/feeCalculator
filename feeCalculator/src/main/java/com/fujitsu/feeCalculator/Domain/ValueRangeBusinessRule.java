@@ -1,35 +1,58 @@
 package com.fujitsu.feeCalculator.Domain;
 
 
+import com.fujitsu.feeCalculator.BLL.HashMapSerializator;
 import com.fujitsu.feeCalculator.Domain.Enums.EValueUnit;
 import com.fujitsu.feeCalculator.Domain.Enums.EVehicleType;
 import com.fujitsu.feeCalculator.Domain.Interfaces.IBusinessRule;
+import com.fujitsu.feeCalculator.Exceptions.InvalidValueRangeConfiguration;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 import java.util.HashMap;
+import java.util.Objects;
 import java.util.UUID;
 
-
+@Entity
+@Table(name = "value_range_rules")
 public class ValueRangeBusinessRule implements IBusinessRule {
 
+    @Id
     private final UUID id = UUID.randomUUID();
-    private final HashMap<EVehicleType, Double> vehicleFeeData;
-    private final double minValue;
-    private final double maxValue;
-    private final EValueUnit valueUnit;
+    private String vehicleFeeData;
+    private double minValue;
+    private double maxValue;
+    private EValueUnit valueUnit;
 
     public ValueRangeBusinessRule(Double minValue,
                                   Double maxValue,
                                   EValueUnit valueUnit,
                                   HashMap<EVehicleType, Double> vehicleFeeData) {
 
+
+        validateMinMaxValues(minValue, maxValue);
         this.minValue = minValue;
         this.maxValue = maxValue;
+
         this.valueUnit = valueUnit;
-        this.vehicleFeeData = vehicleFeeData;
+        HashMapSerializator<EVehicleType> serializator = new HashMapSerializator<>();
+
+        this.vehicleFeeData = serializator.serializeHashMapToString(vehicleFeeData);
+    }
+
+    public ValueRangeBusinessRule() {
+
+    }
+
+    public HashMap<EVehicleType, Double> getDeserializedVehicleFeeData(){
+        HashMapSerializator<EVehicleType> serializator = new HashMapSerializator<>();
+
+        return serializator.deserializeHashMapFromString(this.vehicleFeeData, EVehicleType.class);
     }
 
     public Double getAdditionalFee(EVehicleType vehicleType) {
-        return vehicleFeeData.get(vehicleType);
+        return getDeserializedVehicleFeeData().get(vehicleType);
     }
 
     public boolean checkIfValueInRange(double value){
@@ -38,5 +61,68 @@ public class ValueRangeBusinessRule implements IBusinessRule {
 
     public EValueUnit getValueUnit() {
         return valueUnit;
+    }
+
+    public UUID getId() {
+        return id;
+    }
+
+    public double getMaxValue() {
+        return maxValue;
+    }
+
+    public double getMinValue() {
+        return minValue;
+    }
+
+    public void setMaxValue(double maxValue) {
+        validateMinMaxValues(minValue, maxValue);
+
+        this.maxValue = maxValue;
+    }
+
+    public void setMinValue(double minValue) {
+        validateMinMaxValues(minValue, maxValue);
+        this.minValue = minValue;
+    }
+
+    public void setVehicleFeeData(HashMap<EVehicleType, Double> vehicleFeeData) {
+        HashMapSerializator<EVehicleType> serializator = new HashMapSerializator<>();
+        this.vehicleFeeData = serializator.serializeHashMapToString(vehicleFeeData);
+    }
+
+    private void validateMinMaxValues(Double min, Double max){
+        if(min > max){
+            throw new InvalidValueRangeConfiguration();
+        }
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (!(obj instanceof ValueRangeBusinessRule)) return false;
+        ValueRangeBusinessRule other = (ValueRangeBusinessRule) obj;
+        return Double.compare(minValue, other.minValue) == 0 &&
+                Double.compare(maxValue, other.maxValue) == 0 &&
+                valueUnit == other.valueUnit &&
+                Objects.equals(getDeserializedVehicleFeeData(), other.getDeserializedVehicleFeeData());
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("ValueRangeBusinessRule {")
+                .append("id=").append(id)
+                .append(", minValue=").append(minValue)
+                .append(", maxValue=").append(maxValue)
+                .append(", valueUnit=").append(valueUnit)
+                .append(", vehicleFeeData=").append(vehicleFeeData)
+                .append("}");
+        return sb.toString();
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
     }
 }

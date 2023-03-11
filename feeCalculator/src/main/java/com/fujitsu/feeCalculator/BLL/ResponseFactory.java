@@ -4,7 +4,6 @@ import com.fujitsu.feeCalculator.Domain.Enums.ECityName;
 import com.fujitsu.feeCalculator.Domain.Enums.EVehicleType;
 import com.fujitsu.feeCalculator.Domain.Helpers.EnumLabelMapper;
 import com.fujitsu.feeCalculator.REST.DataClasses.IRestResponseMessage;
-import com.fujitsu.feeCalculator.REST.DataClasses.Message;
 import com.fujitsu.feeCalculator.Domain.WeatherRecord;
 import com.fujitsu.feeCalculator.Services.WeatherService.API.WeatherApiService;
 import com.fujitsu.feeCalculator.Services.WeatherService.Database.WeatherService;
@@ -25,10 +24,11 @@ public class ResponseFactory {
         put("parnu", "pärnu");
         put("pärnu", "pärnu");
     }};
-    private final FeeCalculator feeCalculator = new FeeCalculator();
+    private final FeeCalculator feeCalculator;
     private final WeatherService weatherService;
     @Autowired
-    public ResponseFactory(WeatherService weatherService) {
+    public ResponseFactory(FeeCalculator feeCalculator, WeatherService weatherService) {
+        this.feeCalculator = feeCalculator;
         this.weatherService = weatherService;
     }
 

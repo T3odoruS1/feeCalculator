@@ -1,16 +1,22 @@
 package com.fujitsu.feeCalculator.BLL;
 
-import com.fujitsu.feeCalculator.DAL.BusinessRuleRepo;
 import com.fujitsu.feeCalculator.Domain.*;
 import com.fujitsu.feeCalculator.Domain.Enums.EVehicleType;
 import com.fujitsu.feeCalculator.Domain.Interfaces.IFixedValueBusinessRule;
+import com.fujitsu.feeCalculator.Services.WeatherService.Database.BusinessRuleService;
 import jakarta.annotation.Nullable;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class FeeCalculator {
 
-    private final BusinessRuleRepo businessRuleRepo = new BusinessRuleRepo();
+    private final BusinessRuleService businessRuleService;
+
+    @Autowired
+    public FeeCalculator(BusinessRuleService businessRuleService) {
+        this.businessRuleService = businessRuleService;
+    }
 
 
     @Nullable
@@ -46,7 +52,7 @@ public class FeeCalculator {
     }
 
     private Double getPhenomenonFeeOrDefault(WeatherRecord weatherRecord, EVehicleType vehicleType){
-        PhenomenonBusinessRule WPEFRule = businessRuleRepo.getPhenomenonCalculationRule(weatherRecord.getPhenomenon());
+        PhenomenonBusinessRule WPEFRule = businessRuleService.getPhenomenonBusinessRule(weatherRecord.getPhenomenon());
 
         // If business rule is not null - use it, else use default enum value
         return WPEFRule != null ? WPEFRule.getAdditionalFee(vehicleType) : weatherRecord
@@ -57,7 +63,7 @@ public class FeeCalculator {
     private Double getBaseFeeOrDefault(WeatherRecord weatherRecord,
                                        EVehicleType vehicleType){
 
-        RegionalBaseFeeBusinessRule RBFRule = businessRuleRepo.getRegionalBaseFeeCalculationRule(
+        RegionalBaseFeeBusinessRule RBFRule = businessRuleService.getRegionalBaseFeeBusinessRule(
                 weatherRecord.getCityName()
         );
         // If business rule is not null - use it, else use default enum value

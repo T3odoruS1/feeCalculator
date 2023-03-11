@@ -12,7 +12,10 @@ public interface IWeatherService {
 
     List<WeatherRecord> getAllWeatherRecords();
 
-    WeatherRecord updateWeatherRecord(WeatherRecord weatherRecord, UUID weatherRecordId);
+    WeatherRecord updateWeatherRecord(
+            WeatherRecord weatherRecord,
+            UUID weatherRecordId)
+            ;
 
     void  deleteWeatherRecordById(UUID weatherRecordId);
 
