@@ -1,13 +1,14 @@
 package com.fujitsu.feeCalculator.REST;
 import com.fujitsu.feeCalculator.BLL.ResponseFactory;
-import com.fujitsu.feeCalculator.Domain.Message;
+import com.fujitsu.feeCalculator.REST.DataClasses.IRestResponseMessage;
+import com.fujitsu.feeCalculator.REST.DataClasses.Message;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-@RequestMapping("api/v1/DeliveryFee")
+    @RequestMapping("api/v1/DeliveryFee")
 @RestController
 public class FeeController {
     private final ResponseFactory responseFactory;
@@ -23,7 +24,7 @@ public class FeeController {
      * @return Message returned through REST api.
      */
     @GetMapping
-    public Message getDeliveryFee(@RequestParam String city, @RequestParam String vehicle){
+    public IRestResponseMessage getDeliveryFee(@RequestParam String city, @RequestParam String vehicle){
         return responseFactory.getMessageFromRequest(city, vehicle);
     }
 }

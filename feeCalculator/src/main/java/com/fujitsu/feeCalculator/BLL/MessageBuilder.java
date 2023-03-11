@@ -1,11 +1,12 @@
 package com.fujitsu.feeCalculator.BLL;
 
-import com.fujitsu.feeCalculator.Domain.Message;
+import com.fujitsu.feeCalculator.REST.DataClasses.IRestResponseMessage;
+import com.fujitsu.feeCalculator.REST.DataClasses.Message;
 import com.fujitsu.feeCalculator.Domain.WeatherRecord;
 
 public class MessageBuilder {
 
-    public static Message getMessage(Double deliveryFee, WeatherRecord weatherRecord){
+    public static IRestResponseMessage getMessage(Double deliveryFee, WeatherRecord weatherRecord){
         Message message = new Message();
         message.weatherRecord = weatherRecord;
         if(deliveryFee == null){

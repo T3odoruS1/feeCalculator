@@ -1,14 +1,34 @@
 package com.fujitsu.feeCalculator.REST;
 
-import com.fujitsu.feeCalculator.BLL.MessageBuilder;
-import com.fujitsu.feeCalculator.Domain.Message;
-import jakarta.servlet.http.HttpServletRequest;
-import org.springframework.web.bind.annotation.RequestMapping;
+import com.fujitsu.feeCalculator.Exceptions.CityNotFoundException;
+import com.fujitsu.feeCalculator.Exceptions.VehicleNotFoundException;
+import com.fujitsu.feeCalculator.REST.DataClasses.CustomErrorResponse;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.context.request.WebRequest;
+import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
-public class ErrorController implements org.springframework.boot.web.servlet.error.ErrorController {
-    @RequestMapping("/error")
-    public Message handleError(HttpServletRequest request) {
+import java.time.LocalDateTime;
 
-        return MessageBuilder.getMessage("Looks like something went wrong. Just in case- Acceptable parameters: city={tallinn,tartu,parnu}&vehicle={car,bike,scooter}");
+@ControllerAdvice
+public class ErrorController extends ResponseEntityExceptionHandler {
+
+    @ExceptionHandler({
+            CityNotFoundException.class,
+            VehicleNotFoundException.class
+    })
+    public ResponseEntity<CustomErrorResponse> customHandleNotFound(Exception ex, WebRequest request) {
+
+        CustomErrorResponse errors = new CustomErrorResponse();
+        errors.setTimestamp(LocalDateTime.now());
+        errors.setError(ex.getMessage());
+        errors.setStatus(HttpStatus.NOT_FOUND.value());
+
+        return new ResponseEntity<>(errors, HttpStatus.NOT_FOUND);
+
     }
+
+
 }

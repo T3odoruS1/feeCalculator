@@ -3,6 +3,8 @@ package com.fujitsu.feeCalculator.Domain.Helpers;
 import com.fujitsu.feeCalculator.Domain.Enums.ECityName;
 import com.fujitsu.feeCalculator.Domain.Enums.EPhenomenonType;
 import com.fujitsu.feeCalculator.Domain.Enums.EVehicleType;
+import com.fujitsu.feeCalculator.Exceptions.CityNotFoundException;
+import com.fujitsu.feeCalculator.Exceptions.VehicleNotFoundException;
 
 public class EnumLabelMapper {
 
@@ -26,6 +28,9 @@ public class EnumLabelMapper {
                 returnValue = cityName;
             }
         }
+        if(returnValue == null){
+            throw new CityNotFoundException(label);
+        }
         return returnValue;
     }
 
@@ -35,6 +40,9 @@ public class EnumLabelMapper {
             if(vehicleType.label.equalsIgnoreCase(label)){
                 returnValue = vehicleType;
             }
+        }
+        if(returnValue == null){
+            throw new VehicleNotFoundException(label);
         }
         return returnValue;
     }

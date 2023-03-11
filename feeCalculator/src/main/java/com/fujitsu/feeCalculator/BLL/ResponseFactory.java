@@ -3,7 +3,8 @@ package com.fujitsu.feeCalculator.BLL;
 import com.fujitsu.feeCalculator.Domain.Enums.ECityName;
 import com.fujitsu.feeCalculator.Domain.Enums.EVehicleType;
 import com.fujitsu.feeCalculator.Domain.Helpers.EnumLabelMapper;
-import com.fujitsu.feeCalculator.Domain.Message;
+import com.fujitsu.feeCalculator.REST.DataClasses.IRestResponseMessage;
+import com.fujitsu.feeCalculator.REST.DataClasses.Message;
 import com.fujitsu.feeCalculator.Domain.WeatherRecord;
 import com.fujitsu.feeCalculator.Services.WeatherService.API.WeatherApiService;
 import com.fujitsu.feeCalculator.Services.WeatherService.Database.WeatherService;
@@ -37,13 +38,10 @@ public class ResponseFactory {
      * @param vehicle vehicle name
      * @return Message with delivery fee or error description
      */
-    public Message getMessageFromRequest(String city, String vehicle){
+    public IRestResponseMessage getMessageFromRequest(String city, String vehicle){
         EVehicleType vehicleType = EnumLabelMapper.getVehicleFromString(vehicle);
         ECityName cityName = EnumLabelMapper.getCityNameFromString(getStationName(city));
         WeatherRecord weatherRecord = getWeatherRecord(cityName, vehicleType);
-        if(weatherRecord == null){
-            return MessageBuilder.getMessage("Incorrect parameters provided. Acceptable parameters: city={tallinn,tartu,parnu}&vehicle={car,bike,scooter}");
-        }
         Double fee = feeCalculator.calculateFee(weatherRecord, vehicleType);
 
         return MessageBuilder.getMessage(fee, weatherRecord);
@@ -51,7 +49,7 @@ public class ResponseFactory {
     }
 
     private String getStationName(String cityName){
-        return cityNameToStationNameMap.get(cityName);
+        return cityNameToStationNameMap.get(cityName) != null ? cityNameToStationNameMap.get(cityName) : cityName;
     }
 
 

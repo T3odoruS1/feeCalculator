@@ -15,7 +15,6 @@ public class BusinessRuleRepo implements IBusinessRuleRepo {
     public void saveCalculationRule(IBusinessRule calculationRule) {
 
     }
-
     @Override
     public PhenomenonBusinessRule getPhenomenonCalculationRule(EPhenomenonType phenomenonType) {
         return null;
