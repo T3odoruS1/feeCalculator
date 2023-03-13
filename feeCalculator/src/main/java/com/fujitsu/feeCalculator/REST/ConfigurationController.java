@@ -8,8 +8,6 @@ import com.fujitsu.feeCalculator.Domain.PhenomenonBusinessRule;
 import com.fujitsu.feeCalculator.Domain.RegionalBaseFeeBusinessRule;
 import com.fujitsu.feeCalculator.Domain.ValueRangeBusinessRule;
 import com.fujitsu.feeCalculator.Exceptions.InvalidValueRangeBusinessRuleType;
-import com.fujitsu.feeCalculator.Exceptions.InvalidValueRangeConfiguration;
-import com.fujitsu.feeCalculator.Exceptions.PhenomenonTypeNotFound;
 import com.fujitsu.feeCalculator.Services.WeatherService.Database.BusinessRuleService;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
@@ -89,14 +87,14 @@ public class ConfigurationController {
     public ValueRangeBusinessRule addValueRangeBusinessRule(
              @Valid @NotNull @RequestBody ValueRangeBusinessRule rule
     ){
-        System.out.println(rule);
         return service.saveValueRangeBusinessRule(rule);
     }
 
     @PutMapping(path = "value_range")
     public void updateValueRangeRule(
-            @Valid @NotNull @RequestBody ValueRangeBusinessRule rule
+            @NotNull @RequestBody ValueRangeBusinessRule rule
     ){
+
         service.updateValueRangeBusinessRule(rule);
     }
 

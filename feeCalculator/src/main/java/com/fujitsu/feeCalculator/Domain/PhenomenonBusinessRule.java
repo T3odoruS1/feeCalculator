@@ -21,18 +21,23 @@ import java.util.UUID;
 public class PhenomenonBusinessRule implements IBusinessRule, IFixedValueBusinessRule {
 
     @Id
-    private UUID id = UUID.randomUUID();
+    private UUID id;
     @Column(unique=true)
     private EPhenomenonType phenomenonType;
     private String vehicleFeeData;
 
-    public PhenomenonBusinessRule(EPhenomenonType phenomenonType, HashMap<EVehicleType, Double> vehicleFeeData){
+    public PhenomenonBusinessRule(
+            EPhenomenonType phenomenonType,
+            HashMap<EVehicleType, Double> vehicleFeeData
+    ){
         this.phenomenonType = phenomenonType;
         HashMapSerializator<EVehicleType> serializator = new HashMapSerializator<>();
-
         this.vehicleFeeData = serializator.serializeHashMapToString(vehicleFeeData);
     }
-    PhenomenonBusinessRule(String phenomenonName, HashMap<EVehicleType, Double> vehicleFeeData){
+    PhenomenonBusinessRule(
+            String phenomenonName,
+            HashMap<EVehicleType, Double> vehicleFeeData
+    ){
         this(EnumLabelMapper.getPhenomenonTypeFromString(phenomenonName), vehicleFeeData);
     }
 

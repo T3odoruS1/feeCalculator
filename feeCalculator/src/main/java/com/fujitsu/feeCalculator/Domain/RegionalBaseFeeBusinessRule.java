@@ -21,7 +21,7 @@ import java.util.UUID;
 public class RegionalBaseFeeBusinessRule implements IBusinessRule, IFixedValueBusinessRule {
 
     @Id
-    private UUID id = UUID.randomUUID();
+    private UUID id;
     private String vehicleFeeData;
     @Column(unique=true)
     private ECityName cityName;

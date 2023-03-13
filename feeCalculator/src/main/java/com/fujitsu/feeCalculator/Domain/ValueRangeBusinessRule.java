@@ -1,12 +1,15 @@
 package com.fujitsu.feeCalculator.Domain;
 
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fujitsu.feeCalculator.BLL.HashMapSerializator;
 import com.fujitsu.feeCalculator.Domain.Enums.EValueUnit;
 import com.fujitsu.feeCalculator.Domain.Enums.EVehicleType;
 import com.fujitsu.feeCalculator.Domain.Interfaces.IBusinessRule;
 import com.fujitsu.feeCalculator.Exceptions.InvalidValueRangeConfiguration;
+import jakarta.annotation.Nullable;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -21,20 +24,22 @@ import java.util.Objects;
 import java.util.UUID;
 
 @Entity
+
 @Table(name = "value_range_rules")
 public class ValueRangeBusinessRule implements IBusinessRule {
 
     @Id
-    private UUID id = UUID.randomUUID();
+    private UUID id;
     private String vehicleFeeData;
     private Double minValue;
     private Double maxValue;
     private EValueUnit valueUnit;
 
-    public ValueRangeBusinessRule(@JsonProperty("minValue") Double minValue,
-                                  @JsonProperty("maxValue") Double maxValue,
-                                  @JsonProperty("valueUnit") EValueUnit valueUnit,
-                                  @JsonProperty("vehicleFeeData") HashMap<EVehicleType, Double> vehicleFeeData) {
+    @JsonIgnore
+    public ValueRangeBusinessRule(Double minValue,
+                                  Double maxValue,
+                                  EValueUnit valueUnit,
+                                  HashMap<EVehicleType, Double> vehicleFeeData) {
 
 
         validateMinMaxValues(minValue, maxValue, valueUnit);
@@ -46,7 +51,18 @@ public class ValueRangeBusinessRule implements IBusinessRule {
 
         this.vehicleFeeData = serializator.serializeHashMapToString(vehicleFeeData);
     }
+    @JsonCreator
+    public ValueRangeBusinessRule(@Nullable @JsonProperty("id") UUID id,
+                                  @JsonProperty("minValue") Double minValue,
+                                  @JsonProperty("maxValue") Double maxValue,
+                                  @JsonProperty("valueUnit") EValueUnit valueUnit,
+                                  @JsonProperty("vehicleFeeData") HashMap<EVehicleType, Double> vehicleFeeData){
+        this(minValue, maxValue, valueUnit, vehicleFeeData);
+        this.id = id;
+    }
 
+
+    @JsonIgnore
     public ValueRangeBusinessRule() {
     }
 
