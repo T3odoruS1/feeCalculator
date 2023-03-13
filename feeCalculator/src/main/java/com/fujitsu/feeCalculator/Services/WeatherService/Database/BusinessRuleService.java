@@ -49,8 +49,8 @@ public class BusinessRuleService implements IBusinessRuleService{
         }
         ruleToUpdate.setVehicleFeeData(phenomenonBusinessRule.getVehicleFeeData());
         phenomenonRepo.deleteById(phenomenonBusinessRule.getId());
-        phenomenonRepo.save(phenomenonBusinessRule);
-        return null;
+
+        return phenomenonRepo.save(ruleToUpdate);
     }
 
     @Override
@@ -149,6 +149,8 @@ public class BusinessRuleService implements IBusinessRuleService{
         if(ruleFromDb == null){
             throw new RuntimeException("Rule that is being updated does not exist in the database.");
         }
+        if(!ruleFromDb.getValueUnit().equals(valueRangeBusinessRule.getValueUnit())) return null;
+
         if(!ruleFromDb.getId().equals(valueRangeBusinessRule.getId())){
             throw new RuntimeException("Different business rules provided for updating(id not matching)");
         }
