@@ -21,7 +21,8 @@ public class ErrorController extends ResponseEntityExceptionHandler {
             InvalidValueRangeConfiguration.class,
             IllegalValueUnitException.class,
             PhenomenonTypeNotFound.class,
-            InvalidValueRangeBusinessRuleType.class
+            InvalidValueRangeBusinessRuleType.class,
+            RuntimeException.class
     })
     public ResponseEntity<CustomErrorResponse> customHandleNotFound(Exception ex, WebRequest request) {
 

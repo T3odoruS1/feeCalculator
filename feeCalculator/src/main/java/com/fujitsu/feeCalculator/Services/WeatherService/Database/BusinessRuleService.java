@@ -44,8 +44,8 @@ public class BusinessRuleService implements IBusinessRuleService{
     @Override
     public PhenomenonBusinessRule updatePhenomenonBusinessRule(PhenomenonBusinessRule phenomenonBusinessRule) {
         PhenomenonBusinessRule ruleToUpdate = getPhenomenonBusinessRule(phenomenonBusinessRule.getPhenomenonType());
-        if(!ruleToUpdate.getId().equals( phenomenonBusinessRule.getId())){
-            throw new RuntimeException("Different business rules provided for updating(id not matching)");
+        if(!ruleToUpdate.getId().equals( phenomenonBusinessRule.getId()) || phenomenonBusinessRule.getId() == null){
+            throw new RuntimeException("Different business rules provided for updating(id not matching or null)");
         }
         ruleToUpdate.setVehicleFeeData(phenomenonBusinessRule.getVehicleFeeData());
         phenomenonRepo.deleteById(phenomenonBusinessRule.getId());
@@ -94,8 +94,8 @@ public class BusinessRuleService implements IBusinessRuleService{
         if(ruleToUpdate == null){
             throw new RuntimeException("Rule that is being updated does not exist in the database.");
         }
-        if(!ruleToUpdate.getId().equals(regionalBaseFeeBusinessRule.getId())){
-            throw new RuntimeException("Different business rules provided for updating(id not matching) : "
+        if(!ruleToUpdate.getId().equals(regionalBaseFeeBusinessRule.getId()) || regionalBaseFeeBusinessRule.getId() == null){
+            throw new RuntimeException("Different business rules provided for updating(id not matching or null) : "
                     + ruleToUpdate.getId().toString()  + " and " +
                     regionalBaseFeeBusinessRule.getId().toString());
         }
@@ -145,6 +145,9 @@ public class BusinessRuleService implements IBusinessRuleService{
 
     @Override
     public ValueRangeBusinessRule updateValueRangeBusinessRule(ValueRangeBusinessRule valueRangeBusinessRule) {
+        if(valueRangeBusinessRule.getId() == null)
+            throw new RuntimeException("Provided business rule was provided with null id");
+
         ValueRangeBusinessRule ruleFromDb = getValueRangeBusinessRule(valueRangeBusinessRule.getId());
         if(ruleFromDb == null){
             throw new RuntimeException("Rule that is being updated does not exist in the database.");
