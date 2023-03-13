@@ -1,33 +1,34 @@
 # Delivery fee calculator
 
 This API was developed as a trial task for Fujitsu. This readme will contain all the necessary information about this project.
+Candidate name: Edgar Vildt
 
 ##Table of contents
 
 - [Delivery fee calculator](#delivery-fee-calculator)
-- [REST API documentation](#rest-api-documentation)
+  - [REST API documentation](#rest-api-documentation)
   - [Delivery fee endpoint](#delivery-fee-endpoint)
     - ['city' parameter](#city-parameter)
     - ['vehicle' parameter](#vehicle-parameter)
   - [Business rule configuration endpoint](#business-rule-configuration-endpoint)
-      - [Extra fee based on wind speed (WSEF) in a specific city is paid in case Vehicle type = Bike and:](#extra-fee-based-on-wind-speed-wsef-in-a-specific-city-is-paid-in-case-vehicle-type--bike-and)
-      - [Extra fee based on weather phenomenon (WPEF) in a specific city is paid in case Vehicle type = Scooter or Bike and:](#extra-fee-based-on-weather-phenomenon-wpef-in-a-specific-city-is-paid-in-case-vehicle-type--scooter-or-bike-and)
-- [API behaviour with custom business rules and fees](#api-behaviour-with-custom-business-rules-and-fees)
-- [Regional base fee (RBF) configuration](#regional-base-fee-rbf-configuration)
-    - [Adding RBF new rules](#adding-rbf-new-rules)
-    - [Getting all RBF rules](#getting-all-rbf-rules)
-    - [Editing RBF rules](#editing-rbf-rules)
-    - [Delete custom RBF rule](#delete-custom-rbf-rule)
-- [Wind speed extra fee (WSEF) and air temperature extra fee(ATEF) configuration](#wind-speed-extra-fee-wsef-and-air-temperature-extra-feeatef-configuration)
-    - [Adding custom WSEF and ATEF rules.](#adding-custom-wsef-and-atef-rules)
-    - [Getting WSEF and ATEF custom business rules.](#getting-wsef-and-atef-custom-business-rules)
-    - [Updating WSEF and ATEF custom business rules](#updating-wsef-and-atef-custom-business-rules)
-    - [Deleting WSEF and ATEF custom business rules](#deleting-wsef-and-atef-custom-business-rules)
-- [Extra fee based on weather phenomenon (WPEF) configuration](#extra-fee-based-on-weather-phenomenon-wpef-configuration)
-    - [Adding an extra fee based on weather phenomenon (WPEF) custom business rule.](#adding-an-extra-fee-based-on-weather-phenomenon-wpef-custom-business-rule)
-    - [Gettign all extra fees based on weather phenomenon (WPEF) custom business rules.](#gettign-all-extra-fees-based-on-weather-phenomenon-wpef-custom-business-rules)
-    - [Updating an extra fee based on weather phenomenon (WPEF) custom business rule.](#updating-an-extra-fee-based-on-weather-phenomenon-wpef-custom-business-rule)
-    - [Deleting an extra fee based on weather phenomenon (WPEF) custom business rule.](#deleting-an-extra-fee-based-on-weather-phenomenon-wpef-custom-business-rule)
+          - [Extra fee based on wind speed (WSEF) in a specific city is paid in case Vehicle type = Bike and:](#extra-fee-based-on-wind-speed-wsef-in-a-specific-city-is-paid-in-case-vehicle-type--bike-and)
+          - [Extra fee based on weather phenomenon (WPEF) in a specific city is paid in case Vehicle type = Scooter or Bike and:](#extra-fee-based-on-weather-phenomenon-wpef-in-a-specific-city-is-paid-in-case-vehicle-type--scooter-or-bike-and)
+    - [API behaviour with custom business rules and fees](#api-behaviour-with-custom-business-rules-and-fees)
+      - [Regional base fee (RBF) configuration](#regional-base-fee-rbf-configuration)
+        - [Adding RBF new rules](#adding-rbf-new-rules)
+        - [Getting all RBF rules](#getting-all-rbf-rules)
+        - [Editing RBF rules](#editing-rbf-rules)
+        - [Delete custom RBF rule](#delete-custom-rbf-rule)
+      - [Wind speed extra fee (WSEF) and air temperature extra fee(ATEF) configuration](#wind-speed-extra-fee-wsef-and-air-temperature-extra-feeatef-configuration)
+        - [Adding custom WSEF and ATEF rules.](#adding-custom-wsef-and-atef-rules)
+        - [Getting WSEF and ATEF custom business rules.](#getting-wsef-and-atef-custom-business-rules)
+        - [Updating WSEF and ATEF custom business rules](#updating-wsef-and-atef-custom-business-rules)
+        - [Deleting WSEF and ATEF custom business rules](#deleting-wsef-and-atef-custom-business-rules)
+      - [Extra fee based on weather phenomenon (WPEF) configuration](#extra-fee-based-on-weather-phenomenon-wpef-configuration)
+        - [Adding an extra fee based on weather phenomenon (WPEF) custom business rule.](#adding-an-extra-fee-based-on-weather-phenomenon-wpef-custom-business-rule)
+        - [Gettign all extra fees based on weather phenomenon (WPEF) custom business rules.](#gettign-all-extra-fees-based-on-weather-phenomenon-wpef-custom-business-rules)
+        - [Updating an extra fee based on weather phenomenon (WPEF) custom business rule.](#updating-an-extra-fee-based-on-weather-phenomenon-wpef-custom-business-rule)
+        - [Deleting an extra fee based on weather phenomenon (WPEF) custom business rule.](#deleting-an-extra-fee-based-on-weather-phenomenon-wpef-custom-business-rule)
 
 
 
