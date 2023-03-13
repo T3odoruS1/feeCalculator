@@ -70,7 +70,7 @@ public class ValueRangeBusinessRule implements IBusinessRule {
     }
 
     public void generateId(){
-        this.id = UUID.randomUUID();
+        if(this.id == null)this.id = UUID.randomUUID();
     }
 
     public HashMap<EVehicleType, Double> getDeserializedVehicleFeeData(){
@@ -79,16 +79,25 @@ public class ValueRangeBusinessRule implements IBusinessRule {
         return serializator.deserializeHashMapFromString(this.vehicleFeeData, EVehicleType.class);
     }
 
+
     public Double getAdditionalFee(EVehicleType vehicleType) {
         return getDeserializedVehicleFeeData().get(vehicleType);
     }
 
-
+    /**
+     * Check if provided value is in range of this business rule. Min and max are exclusive
+     * @param value value to check
+     * @return true if in range, false if not
+     */
     public boolean checkIfValueInRange(Double value){
         return minValue < value && maxValue > value;
     }
 
-    // Including min
+    /**
+     * Check if provided value is in range on this business rule. Min is inclusive, max is not
+     * @param value value to check
+     * @return true if in range, false if not
+     */
     public boolean checkIfValueInRangeMinInclusive(Double value){
         return minValue <= value && maxValue > value;
     }

@@ -10,7 +10,6 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import org.hibernate.validator.constraints.UniqueElements;
 
 import java.util.HashMap;
 import java.util.Objects;
@@ -41,15 +40,18 @@ public class PhenomenonBusinessRule implements IBusinessRule, IFixedValueBusines
         this(EnumLabelMapper.getPhenomenonTypeFromString(phenomenonName), vehicleFeeData);
     }
 
+    /**
+     * Generate id if current is null
+     */
     public void generateId() {
-        this.id = UUID.randomUUID();
+        if(this.id == null) this.id = UUID.randomUUID();
     }
 
     public PhenomenonBusinessRule() {
 
     }
 
-    HashMap<EVehicleType, Double> getDeserializedVehicleFeeData(){
+    private HashMap<EVehicleType, Double> getDeserializedVehicleFeeData(){
         HashMapSerializator<EVehicleType> serializator = new HashMapSerializator<>();
         return serializator.deserializeHashMapFromString(this.vehicleFeeData, EVehicleType.class);
     }
@@ -99,7 +101,6 @@ public class PhenomenonBusinessRule implements IBusinessRule, IFixedValueBusines
                 ", vehicleFeeData=" + vehicleFeeData +
                 '}';
     }
-
 
     public HashMap<EVehicleType, Double> getVehicleFeeData() {
         return getDeserializedVehicleFeeData();

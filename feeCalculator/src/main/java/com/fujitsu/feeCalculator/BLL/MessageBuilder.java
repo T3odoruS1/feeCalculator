@@ -6,6 +6,12 @@ import com.fujitsu.feeCalculator.Domain.WeatherRecord;
 
 public class MessageBuilder {
 
+    /**
+     * Constructs a message using a weather record and a delivery fee
+     * @param deliveryFee delivery fee or null for prohibited delivery
+     * @param weatherRecord weather record
+     * @return response message for REST interface
+     */
     public static IRestResponseMessage getMessage(Double deliveryFee, WeatherRecord weatherRecord){
         Message message = new Message();
         message.weatherRecord = weatherRecord;
@@ -16,12 +22,6 @@ public class MessageBuilder {
         }
         message.deliveryFee = deliveryFee;
         return message;
-    }
-
-    public static Message getMessage(String message){
-        Message message1 = new Message();
-        message1.message = message;
-        return message1;
     }
 
 }

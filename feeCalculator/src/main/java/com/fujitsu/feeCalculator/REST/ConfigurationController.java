@@ -43,15 +43,8 @@ public class ConfigurationController {
         service.updatePhenomenonBusinessRule(rule);
     }
 
-//    @DeleteMapping(path = "phenomenon/deleteById/{id}")
-//    public void deletePhenomenonBusinessRuleById(@PathVariable("id")UUID id){
-//        service.deletePhenomenonBusinessRule(id);
-//    }
-
     @DeleteMapping(path = "phenomenon/{type}")
     public void deletePhenomenonBusinessRuleByType(@PathVariable("type") EPhenomenonType type){
-//        EPhenomenonType phenomenonType = EnumLabelMapper.getPhenomenonTypeFromString(type);
-//        if(phenomenonType == null) throw new PhenomenonTypeNotFound(type);
         service.deletePhenomenonBusinessRule(type);
     }
 

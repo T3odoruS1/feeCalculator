@@ -8,6 +8,10 @@ import java.util.UUID;
 
 
 public interface IBusinessRule {
-
+    /**
+     * Get additional fee from business rule considering the type of transport
+     * @param vehicleType type of transport
+     * @return delivery fee if delivery allowed, null if prohibited
+     */
     Double getAdditionalFee(EVehicleType vehicleType);
 }

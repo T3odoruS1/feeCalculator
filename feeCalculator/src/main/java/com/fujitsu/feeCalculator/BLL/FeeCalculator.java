@@ -19,9 +19,12 @@ public class FeeCalculator {
         this.businessRuleService = businessRuleService;
     }
 
-
-    @Nullable
-    // If delivery is possible return price, else return null
+    /**
+     * Calculates delivery fee considering a location inside a weather record and a provided vehicle type.
+     * @param weatherRecord weather record
+     * @param vehicleType vehicle type
+     * @return Calculated delivery fee if delivery is allowed or null if delivery is prohibited
+     */
     public Double calculateFee(WeatherRecord weatherRecord, EVehicleType vehicleType){
 
         Double RBF = getBaseFeeOrDefault(weatherRecord, vehicleType);
@@ -36,20 +39,6 @@ public class FeeCalculator {
             return null;
         }
         return RBF + ATEF + WSEF + WPEF;
-    }
-
-    // Look in repo for data. If no data - use enums with default data
-    private <T extends IFixedValueBusinessRule> Double getFeeByFixedRuleOrDefault(
-            T ruleType,
-            WeatherRecord weatherRecord,
-            EVehicleType vehicleType){
-        if(ruleType instanceof RegionalBaseFeeBusinessRule){
-            return getBaseFeeOrDefault(weatherRecord, vehicleType);
-        }
-        if(ruleType instanceof PhenomenonBusinessRule){
-            return getPhenomenonFeeOrDefault(weatherRecord, vehicleType);
-        }
-        return 0.0;
     }
 
     private Double getPhenomenonFeeOrDefault(WeatherRecord weatherRecord, EVehicleType vehicleType){

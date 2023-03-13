@@ -11,6 +11,12 @@ import com.fujitsu.feeCalculator.Exceptions.VehicleNotFoundException;
 
 public class EnumLabelMapper {
 
+
+    /**
+     * Map label string to phenomenon enum
+     * @param label input label string
+     * @return phenomenon type enum
+     */
     public static EPhenomenonType getPhenomenonTypeFromString(String label) {
         EPhenomenonType returnValue = null;
         for (EPhenomenonType phenomenonType : EPhenomenonType.values()) {
@@ -24,6 +30,11 @@ public class EnumLabelMapper {
         return returnValue;
     }
 
+    /**
+     * Map label string to city enum
+     * @param label label of enum
+     * @return city enum
+     */
     public static ECityName getCityNameFromString(String label){
         ECityName returnValue = null;
         for (ECityName cityName : ECityName.values()) {
@@ -37,6 +48,11 @@ public class EnumLabelMapper {
         return returnValue;
     }
 
+    /**
+     * Map label string to vehicle type enum
+     * @param label label of enum
+     * @return vehicle type enum
+     */
     public static EVehicleType getVehicleFromString(String label){
         EVehicleType returnValue = null;
         for (EVehicleType vehicleType: EVehicleType.values()){
@@ -50,6 +66,11 @@ public class EnumLabelMapper {
         return returnValue;
     }
 
+    /**
+     * Map label string to value unit enum
+     * @param label label string of enum
+     * @return value unit enum
+     */
     public static EValueUnit getValueUnitFromString(String label){
         EValueUnit returnValue = null;
         for (EValueUnit valueUnit: EValueUnit.values()){

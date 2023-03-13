@@ -45,7 +45,7 @@ public class RegionalBaseFeeBusinessRule implements IBusinessRule, IFixedValueBu
     }
 
     public void generateId(){
-        this.id = UUID.randomUUID();
+        if(this.id == null) this.id = UUID.randomUUID();
     }
 
     public HashMap<EVehicleType, Double> getDeserializedVehicleFeeData(){

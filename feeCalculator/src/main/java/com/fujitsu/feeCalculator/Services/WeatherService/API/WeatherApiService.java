@@ -53,6 +53,10 @@ public class WeatherApiService implements IWeatherApiService {
         return prepareConnection(urlString, "GET", "application/xml");
     }
 
+    /**
+     * Gets the latest weather observations in form of an array of WeatherRecords
+     * @return latest weather records
+     */
     @Override
     public List<WeatherRecord> getLatestObservations() {
         try{

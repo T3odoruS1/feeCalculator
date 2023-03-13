@@ -1,5 +1,7 @@
 package com.fujitsu.feeCalculator.Domain.Enums;
 
+import com.fujitsu.feeCalculator.Domain.DeliveryFeeHashmapStore;
+
 import java.util.HashMap;
 
 public enum EPhenomenonType{
@@ -10,108 +12,28 @@ public enum EPhenomenonType{
     VARIABLE_CLOUDS("Variable clouds"),
     CLOUDY_WITH_CLEAR_SPELLS("Cloudy with clear spells"),
     OVERCAST("Overcast"),
-    LIGHT_SNOW_SHOWER("Light snow shower", new HashMap<>() {{
-        put(EVehicleType.CAR, 0.0);
-        put(EVehicleType.SCOOTER, 1.0);
-        put(EVehicleType.BIKE, 1.0);
-    }}),
-    MODERATE_SNOW_SHOWER("Moderate snow shower", new HashMap<>() {{
-        put(EVehicleType.CAR, 0.0);
-        put(EVehicleType.SCOOTER, 1.0);
-        put(EVehicleType.BIKE, 1.0);
-    }}),
-    HEAVY_SNOW_SHOWER("Heavy snow shower", new HashMap<>() {{
-        put(EVehicleType.CAR, 0.0);
-        put(EVehicleType.SCOOTER, 1.0);
-        put(EVehicleType.BIKE, 1.0);
-    }}),
-    LIGHT_SHOWER("Light shower", new HashMap<>() {{
-        put(EVehicleType.CAR, 0.0);
-        put(EVehicleType.SCOOTER, 0.5);
-        put(EVehicleType.BIKE, 0.5);
-    }}),
-    MODERATE_SHOWER("Moderate shower", new HashMap<>() {{
-        put(EVehicleType.CAR, 0.0);
-        put(EVehicleType.SCOOTER, 0.5);
-        put(EVehicleType.BIKE, 0.5);
-    }}),
-    HEAVY_SHOWER("Heavy shower", new HashMap<>() {{
-        put(EVehicleType.CAR, 0.0);
-        put(EVehicleType.SCOOTER, 0.5);
-        put(EVehicleType.BIKE, 0.5);
-    }}),
-    LIGHT_RAIN("Light rain", new HashMap<>() {{
-        put(EVehicleType.CAR, 0.0);
-        put(EVehicleType.SCOOTER, 0.5);
-        put(EVehicleType.BIKE, 0.5);
-    }}),
-    MODERATE_RAIN("Moderate rain", new HashMap<>() {{
-        put(EVehicleType.CAR, 0.0);
-        put(EVehicleType.SCOOTER, 0.5);
-        put(EVehicleType.BIKE, 0.5);
-    }}),
-    HEAVY_RAIN("Heavy rain", new HashMap<>() {{
-        put(EVehicleType.CAR, 0.0);
-        put(EVehicleType.SCOOTER, 0.5);
-        put(EVehicleType.BIKE, 0.5);
-    }}),
-    GLAZE("Glaze", new HashMap<>() {{
-        put(EVehicleType.CAR, 0.0);
-        put(EVehicleType.SCOOTER, null);
-        put(EVehicleType.BIKE, null);
-    }}),
-    LIGHT_SLEET("Light sleet", new HashMap<>() {{
-        put(EVehicleType.CAR, 0.0);
-        put(EVehicleType.SCOOTER, 1.0);
-        put(EVehicleType.BIKE, 1.0);
-    }}),
-    MODERATE_SLEET("Moderate sleet", new HashMap<>() {{
-        put(EVehicleType.CAR, 0.0);
-        put(EVehicleType.SCOOTER, 1.0);
-        put(EVehicleType.BIKE, 1.0);
-    }}),
-    LIGHT_SNOWFALL("Light snowfall", new HashMap<>() {{
-        put(EVehicleType.CAR, 0.0);
-        put(EVehicleType.SCOOTER, 1.0);
-        put(EVehicleType.BIKE, 1.0);
-    }}),
-    MODERATE_SNOWFALL("Moderate snowfall", new HashMap<>() {{
-        put(EVehicleType.CAR, 0.0);
-        put(EVehicleType.SCOOTER, 1.0);
-        put(EVehicleType.BIKE, 1.0);
-    }}),
-    HEAVY_SNOWFALL("Heavy snowfall", new HashMap<>() {{
-        put(EVehicleType.CAR, 0.0);
-        put(EVehicleType.SCOOTER, 1.0);
-        put(EVehicleType.BIKE, 1.0);
-    }}),
-    BLOWING_SNOW("Blowing snow", new HashMap<>() {{
-        put(EVehicleType.CAR, 0.0);
-        put(EVehicleType.SCOOTER, 1.0);
-        put(EVehicleType.BIKE, 1.0);
-    }}),
-    DRIFTING_SNOW("Drifting snow", new HashMap<>() {{
-        put(EVehicleType.CAR, 0.0);
-        put(EVehicleType.SCOOTER, 1.0);
-        put(EVehicleType.BIKE, 1.0);
-    }}),
-    HAIL("Hail", new HashMap<>() {{
-        put(EVehicleType.CAR, 0.0);
-        put(EVehicleType.SCOOTER, null);
-        put(EVehicleType.BIKE, null);
-    }}),
+    LIGHT_SNOW_SHOWER("Light snow shower", DeliveryFeeHashmapStore.snowPhenomenonDefault),
+    MODERATE_SNOW_SHOWER("Moderate snow shower", DeliveryFeeHashmapStore.snowPhenomenonDefault),
+    HEAVY_SNOW_SHOWER("Heavy snow shower", DeliveryFeeHashmapStore.snowPhenomenonDefault),
+    LIGHT_SHOWER("Light shower", DeliveryFeeHashmapStore.rainPhenomenonDefault),
+    MODERATE_SHOWER("Moderate shower", DeliveryFeeHashmapStore.rainPhenomenonDefault),
+    HEAVY_SHOWER("Heavy shower", DeliveryFeeHashmapStore.rainPhenomenonDefault),
+    LIGHT_RAIN("Light rain", DeliveryFeeHashmapStore.rainPhenomenonDefault),
+    MODERATE_RAIN("Moderate rain", DeliveryFeeHashmapStore.rainPhenomenonDefault),
+    HEAVY_RAIN("Heavy rain", DeliveryFeeHashmapStore.rainPhenomenonDefault),
+    GLAZE("Glaze", DeliveryFeeHashmapStore.carOnlyDelivery),
+    LIGHT_SLEET("Light sleet", DeliveryFeeHashmapStore.snowPhenomenonDefault),
+    MODERATE_SLEET("Moderate sleet", DeliveryFeeHashmapStore.snowPhenomenonDefault),
+    LIGHT_SNOWFALL("Light snowfall", DeliveryFeeHashmapStore.snowPhenomenonDefault),
+    MODERATE_SNOWFALL("Moderate snowfall", DeliveryFeeHashmapStore.snowPhenomenonDefault),
+    HEAVY_SNOWFALL("Heavy snowfall", DeliveryFeeHashmapStore.snowPhenomenonDefault),
+    BLOWING_SNOW("Blowing snow", DeliveryFeeHashmapStore.snowPhenomenonDefault),
+    DRIFTING_SNOW("Drifting snow", DeliveryFeeHashmapStore.snowPhenomenonDefault),
+    HAIL("Hail", DeliveryFeeHashmapStore.carOnlyDelivery),
     MIST("Mist"),
     FOG("Fog"),
-    THUNDER("Thunder", new HashMap<>() {{
-        put(EVehicleType.CAR, 0.0);
-        put(EVehicleType.SCOOTER, null);
-        put(EVehicleType.BIKE, null);
-    }}),
-    THUNDERSTORM("Thunderstorm", new HashMap<>() {{
-        put(EVehicleType.CAR, 0.0);
-        put(EVehicleType.SCOOTER, null);
-        put(EVehicleType.BIKE, null);
-    }});
+    THUNDER("Thunder", DeliveryFeeHashmapStore.carOnlyDelivery),
+    THUNDERSTORM("Thunderstorm", DeliveryFeeHashmapStore.carOnlyDelivery);
 
     public final String label;
     public final HashMap<EVehicleType, Double> defaultVehicleFees;
