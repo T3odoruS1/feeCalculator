@@ -1,14 +1,20 @@
 package com.fujitsu.feeCalculator.Domain;
 
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fujitsu.feeCalculator.BLL.HashMapSerializator;
 import com.fujitsu.feeCalculator.Domain.Enums.EValueUnit;
 import com.fujitsu.feeCalculator.Domain.Enums.EVehicleType;
 import com.fujitsu.feeCalculator.Domain.Interfaces.IBusinessRule;
 import com.fujitsu.feeCalculator.Exceptions.InvalidValueRangeConfiguration;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.HashMap;
 import java.util.Objects;
@@ -19,16 +25,16 @@ import java.util.UUID;
 public class ValueRangeBusinessRule implements IBusinessRule {
 
     @Id
-    private final UUID id = UUID.randomUUID();
+    private UUID id = UUID.randomUUID();
     private String vehicleFeeData;
-    private double minValue;
-    private double maxValue;
+    private Double minValue;
+    private Double maxValue;
     private EValueUnit valueUnit;
 
-    public ValueRangeBusinessRule(Double minValue,
-                                  Double maxValue,
-                                  EValueUnit valueUnit,
-                                  HashMap<EVehicleType, Double> vehicleFeeData) {
+    public ValueRangeBusinessRule(@JsonProperty("minValue") Double minValue,
+                                  @JsonProperty("maxValue") Double maxValue,
+                                  @JsonProperty("valueUnit") EValueUnit valueUnit,
+                                  @JsonProperty("vehicleFeeData") HashMap<EVehicleType, Double> vehicleFeeData) {
 
 
         validateMinMaxValues(minValue, maxValue, valueUnit);
@@ -42,7 +48,10 @@ public class ValueRangeBusinessRule implements IBusinessRule {
     }
 
     public ValueRangeBusinessRule() {
+    }
 
+    public void generateId(){
+        this.id = UUID.randomUUID();
     }
 
     public HashMap<EVehicleType, Double> getDeserializedVehicleFeeData(){
@@ -73,11 +82,11 @@ public class ValueRangeBusinessRule implements IBusinessRule {
         return id;
     }
 
-    public double getMaxValue() {
+    public Double getMaxValue() {
         return maxValue;
     }
 
-    public double getMinValue() {
+    public Double getMinValue() {
         return minValue;
     }
 

@@ -21,12 +21,15 @@ import java.util.UUID;
 public class RegionalBaseFeeBusinessRule implements IBusinessRule, IFixedValueBusinessRule {
 
     @Id
-    private final UUID id = UUID.randomUUID();
+    private UUID id = UUID.randomUUID();
     private String vehicleFeeData;
     @Column(unique=true)
     private ECityName cityName;
 
-    public RegionalBaseFeeBusinessRule(ECityName cityName, HashMap<EVehicleType, Double> vehicleFeeData) {
+    public RegionalBaseFeeBusinessRule(
+            ECityName cityName,
+            HashMap<EVehicleType, Double> vehicleFeeData
+    ) {
         this.cityName = cityName;
         HashMapSerializator<EVehicleType> serializator = new HashMapSerializator<>();
 
@@ -39,6 +42,10 @@ public class RegionalBaseFeeBusinessRule implements IBusinessRule, IFixedValueBu
 
     public RegionalBaseFeeBusinessRule() {
 
+    }
+
+    public void generateId(){
+        this.id = UUID.randomUUID();
     }
 
     public HashMap<EVehicleType, Double> getDeserializedVehicleFeeData(){

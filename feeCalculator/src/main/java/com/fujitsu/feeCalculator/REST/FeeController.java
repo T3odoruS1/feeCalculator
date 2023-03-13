@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-    @RequestMapping("api/v1/DeliveryFee")
+    @RequestMapping("api/v1/delivery_fee")
 @RestController
 public class FeeController {
     private final ResponseFactory responseFactory;

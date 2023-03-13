@@ -21,11 +21,9 @@ import java.util.UUID;
 public class PhenomenonBusinessRule implements IBusinessRule, IFixedValueBusinessRule {
 
     @Id
-    private final UUID id = UUID.randomUUID();
-
+    private UUID id = UUID.randomUUID();
     @Column(unique=true)
     private EPhenomenonType phenomenonType;
-
     private String vehicleFeeData;
 
     public PhenomenonBusinessRule(EPhenomenonType phenomenonType, HashMap<EVehicleType, Double> vehicleFeeData){
@@ -36,6 +34,10 @@ public class PhenomenonBusinessRule implements IBusinessRule, IFixedValueBusines
     }
     PhenomenonBusinessRule(String phenomenonName, HashMap<EVehicleType, Double> vehicleFeeData){
         this(EnumLabelMapper.getPhenomenonTypeFromString(phenomenonName), vehicleFeeData);
+    }
+
+    public void generateId() {
+        this.id = UUID.randomUUID();
     }
 
     public PhenomenonBusinessRule() {

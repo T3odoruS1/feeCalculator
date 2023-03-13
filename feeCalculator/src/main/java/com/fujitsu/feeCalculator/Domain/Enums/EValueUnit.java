@@ -1,8 +1,8 @@
 package com.fujitsu.feeCalculator.Domain.Enums;
 
 public enum EValueUnit {
-    TEMPERATURE("tmp"),
-    WIND_SPEED("wnd");
+    TEMPERATURE("temperature"),
+    WIND_SPEED("wind");
 
     public final String label;
 

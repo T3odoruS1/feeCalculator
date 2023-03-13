@@ -37,6 +37,7 @@ public class BusinessRuleService implements IBusinessRuleService{
     public PhenomenonBusinessRule savePhenomenonBusinessRule(PhenomenonBusinessRule phenomenonBusinessRule) {
         if(!canSavePhenomenonBusinessRule(phenomenonBusinessRule))
             throw new BusinessRuleAlreadyImplementedException(phenomenonBusinessRule);
+        phenomenonBusinessRule.generateId();
         return phenomenonRepo.save(phenomenonBusinessRule);
     }
 
@@ -83,6 +84,7 @@ public class BusinessRuleService implements IBusinessRuleService{
         if(!canSaveRegionalBaseFee(regionalBaseFeeBusinessRule.getCityName())){
             throw new BusinessRuleAlreadyImplementedException(regionalBaseFeeBusinessRule);
         }
+        regionalBaseFeeBusinessRule.generateId();
         return baseFeeRepo.save(regionalBaseFeeBusinessRule);
     }
 
@@ -133,8 +135,8 @@ public class BusinessRuleService implements IBusinessRuleService{
         if(!canSaveValueInRangeBusinessRule(valueRangeBusinessRule)){
             throw new BusinessRuleAlreadyImplementedException(valueRangeBusinessRule);
         }
-        valueRangeRepo.save(valueRangeBusinessRule);
-        return null;
+        valueRangeBusinessRule.generateId();
+        return valueRangeRepo.save(valueRangeBusinessRule);
     }
 
     @Override

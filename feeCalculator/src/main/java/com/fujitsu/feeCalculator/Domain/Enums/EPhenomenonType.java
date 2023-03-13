@@ -4,8 +4,6 @@ import java.util.HashMap;
 
 public enum EPhenomenonType{
 
-
-
     NO_DATA(""),
     CLEAR("Clear"),
     FEW_CLOUDS("Few clouds"),

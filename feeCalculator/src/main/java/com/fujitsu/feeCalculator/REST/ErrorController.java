@@ -1,8 +1,6 @@
 package com.fujitsu.feeCalculator.REST;
 
-import com.fujitsu.feeCalculator.Exceptions.BusinessRuleAlreadyImplementedException;
-import com.fujitsu.feeCalculator.Exceptions.CityNotFoundException;
-import com.fujitsu.feeCalculator.Exceptions.VehicleNotFoundException;
+import com.fujitsu.feeCalculator.Exceptions.*;
 import com.fujitsu.feeCalculator.REST.DataClasses.CustomErrorResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +17,11 @@ public class ErrorController extends ResponseEntityExceptionHandler {
     @ExceptionHandler({
             CityNotFoundException.class,
             VehicleNotFoundException.class,
-            BusinessRuleAlreadyImplementedException.class
+            BusinessRuleAlreadyImplementedException.class,
+            InvalidValueRangeConfiguration.class,
+            IllegalValueUnitException.class,
+            PhenomenonTypeNotFound.class,
+            InvalidValueRangeBusinessRuleType.class
     })
     public ResponseEntity<CustomErrorResponse> customHandleNotFound(Exception ex, WebRequest request) {
 
