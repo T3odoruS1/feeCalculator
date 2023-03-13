@@ -3,9 +3,10 @@
 This API was developed as a trial task for Fujitsu. This readme will contain all the necessary information about this project.
 Candidate name: Edgar Vildt
 
-##Table of contents
+## Table of contents
 
 - [Delivery fee calculator](#delivery-fee-calculator)
+  - [Table of contents](#table-of-contents)
   - [REST API documentation](#rest-api-documentation)
   - [Delivery fee endpoint](#delivery-fee-endpoint)
     - ['city' parameter](#city-parameter)
