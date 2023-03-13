@@ -99,9 +99,13 @@ public class BusinessRuleService implements IBusinessRuleService{
                     + ruleToUpdate.getId().toString()  + " and " +
                     regionalBaseFeeBusinessRule.getId().toString());
         }
-        ruleToUpdate.setVehicleFeeData(regionalBaseFeeBusinessRule.getDeserializedVehicleFeeData());
         baseFeeRepo.deleteById(regionalBaseFeeBusinessRule.getId());
-        return baseFeeRepo.save(ruleToUpdate);
+
+        // In case city name changes
+        if(!canSaveRegionalBaseFee(regionalBaseFeeBusinessRule.getCityName())){
+            throw new BusinessRuleAlreadyImplementedException(regionalBaseFeeBusinessRule);
+        }
+        return baseFeeRepo.save(regionalBaseFeeBusinessRule);
     }
 
     @Override

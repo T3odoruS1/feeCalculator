@@ -14,6 +14,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -31,7 +32,9 @@ public class ValueRangeBusinessRule implements IBusinessRule {
     @Id
     private UUID id;
     private String vehicleFeeData;
+    @NotNull
     private Double minValue;
+    @NotNull
     private Double maxValue;
     private EValueUnit valueUnit;
 
