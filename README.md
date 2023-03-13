@@ -12,6 +12,13 @@ Candidate name: Edgar Vildt
     - ['city' parameter](#city-parameter)
     - ['vehicle' parameter](#vehicle-parameter)
   - [Business rule configuration endpoint](#business-rule-configuration-endpoint)
+    - [Default rules:](#default-rules)
+      - [Business rules to calculate regional base fee (RBF):](#business-rules-to-calculate-regional-base-fee-rbf)
+          - [](#)
+          - [In case City = Tartu and:](#in-case-city--tartu-and)
+          - [In case City = Pärnu and:](#in-case-city--pärnu-and)
+      - [Business rules to calculate extra fees for weather conditions:](#business-rules-to-calculate-extra-fees-for-weather-conditions)
+          - [Extra fee based on air temperature (ATEF) in a specific city is paid in case Vehicle type = Scooter or Bike and:](#extra-fee-based-on-air-temperature-atef-in-a-specific-city-is-paid-in-case-vehicle-type--scooter-or-bike-and)
           - [Extra fee based on wind speed (WSEF) in a specific city is paid in case Vehicle type = Bike and:](#extra-fee-based-on-wind-speed-wsef-in-a-specific-city-is-paid-in-case-vehicle-type--bike-and)
           - [Extra fee based on weather phenomenon (WPEF) in a specific city is paid in case Vehicle type = Scooter or Bike and:](#extra-fee-based-on-weather-phenomenon-wpef-in-a-specific-city-is-paid-in-case-vehicle-type--scooter-or-bike-and)
     - [API behaviour with custom business rules and fees](#api-behaviour-with-custom-business-rules-and-fees)
@@ -100,30 +107,29 @@ All available parameter values(not case sensitive)
 
 This endpoint allows to configure different fee calculation business rules and change delivery fees.
 
-###Default rules:
-
-####Business rules to calculate regional base fee (RBF):
-
-######In case City = Tallinn and:
-
+### Default rules:
+ 
+#### Business rules to calculate regional base fee (RBF):
+ 
+###### 
 - Vehicle type = Car, then RBF = 4 €
 - Vehicle type = Scooter, then RBF = 3,5 €
 - Vehicle type = Bike, then RBF = 3 €
 
-######In case City = Tartu and:
+###### In case City = Tartu and:
 - Vehicle type = Car, then RBF = 3,5 €
 - Vehicle type = Scooter, then RBF = 3 € 
 - Vehicle type = Bike, then RBF = 2,5 €
 
-######In case City = Pärnu and:
+###### In case City = Pärnu and:
 - Vehicle type = Car, then RBF = 3 €
 - Vehicle type = Scooter, then RBF = 2,5 € 
 - Vehicle type = Bike, then RBF = 2 €
 
 
-####Business rules to calculate extra fees for weather conditions:
+#### Business rules to calculate extra fees for weather conditions:
 
-######Extra fee based on air temperature (ATEF) in a specific city is paid in case Vehicle type = Scooter or Bike and:
+###### Extra fee based on air temperature (ATEF) in a specific city is paid in case Vehicle type = Scooter or Bike and:
 - Air temperature is less than -10 C, then ATEF = 1 €
 - Air temperature is between -10 C and 0 C, then ATEF = 0,5 €
 
