@@ -2,6 +2,9 @@ package com.fujitsu.feeCalculator.Exceptions;
 
 import com.fujitsu.feeCalculator.Domain.Interfaces.IBusinessRule;
 
+/**
+ * Thrown when trying to save business rule that is overlapping with other custom business rule. Default rule is OK.
+ */
 public class BusinessRuleAlreadyImplementedException extends RuntimeException{
 
     public BusinessRuleAlreadyImplementedException(IBusinessRule businessRule){

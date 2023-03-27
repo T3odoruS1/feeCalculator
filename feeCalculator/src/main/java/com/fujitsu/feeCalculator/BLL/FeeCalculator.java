@@ -66,11 +66,12 @@ public class FeeCalculator {
     private Double getAdditionalRangeValueFee(WeatherRecord weatherRecord, EVehicleType vehicleType, EValueUnit valueUnit){
         ValueRangeBusinessRule rangeBusinessRule = businessRuleService
                 .getValueRangeBusinessRule(getCorrectUnitsFromWeatherRecord(weatherRecord, valueUnit), valueUnit);
+        // If custom rule present use it.
         if(rangeBusinessRule != null){
             System.out.println("Range rule: " + rangeBusinessRule);
             return rangeBusinessRule.getAdditionalFee(vehicleType);
         }
-
+        // If custom rule not present use default ones.
         return valueUnit.equals(EValueUnit.WIND_SPEED) ?
                 getDefaultAdditionalWindFee(weatherRecord, vehicleType) :
                 getDefaultAdditionalTemperatureFee(weatherRecord, vehicleType);

@@ -1,7 +1,6 @@
 package com.fujitsu.feeCalculator.REST;
 import com.fujitsu.feeCalculator.BLL.ResponseFactory;
 import com.fujitsu.feeCalculator.REST.DataClasses.IRestResponseMessage;
-import com.fujitsu.feeCalculator.REST.DataClasses.Message;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

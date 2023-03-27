@@ -1,5 +1,8 @@
 package com.fujitsu.feeCalculator.Exceptions;
 
+/**
+  * Used when provided incorrect city name string and ECityName enum couldn't be constructed.
+ */
 public class CityNotFoundException extends RuntimeException{
 
     public CityNotFoundException(String providedCity){

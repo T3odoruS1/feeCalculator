@@ -35,7 +35,9 @@ public class HashMapSerializator<E extends Enum<E>> {
         HashMap<E, Double> hashMap = null;
         try {
             ObjectMapper objectMapper = new ObjectMapper();
-            hashMap = objectMapper.readValue(json, objectMapper.getTypeFactory().constructMapType(HashMap.class, enumClass, Double.class));
+            hashMap = objectMapper.readValue(
+                    json,
+                    objectMapper.getTypeFactory().constructMapType(HashMap.class, enumClass, Double.class));
         } catch (IOException e) {
             e.printStackTrace();
         }

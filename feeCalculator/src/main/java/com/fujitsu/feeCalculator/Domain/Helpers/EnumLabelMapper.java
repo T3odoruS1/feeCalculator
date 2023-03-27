@@ -6,7 +6,6 @@ import com.fujitsu.feeCalculator.Domain.Enums.EValueUnit;
 import com.fujitsu.feeCalculator.Domain.Enums.EVehicleType;
 import com.fujitsu.feeCalculator.Exceptions.CityNotFoundException;
 import com.fujitsu.feeCalculator.Exceptions.IllegalValueUnitException;
-import com.fujitsu.feeCalculator.Exceptions.PhenomenonTypeNotFound;
 import com.fujitsu.feeCalculator.Exceptions.VehicleNotFoundException;
 
 public class EnumLabelMapper {

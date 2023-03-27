@@ -1,5 +1,9 @@
 package com.fujitsu.feeCalculator.Exceptions;
 
+
+/**
+ * Used when invalid vehicle string was provided and couldn't be decoded.
+ */
 public class VehicleNotFoundException extends RuntimeException{
 
     public VehicleNotFoundException(String providedVehicle){

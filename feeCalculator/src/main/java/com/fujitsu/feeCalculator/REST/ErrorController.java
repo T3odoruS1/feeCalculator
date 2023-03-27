@@ -20,8 +20,6 @@ public class ErrorController extends ResponseEntityExceptionHandler {
             BusinessRuleAlreadyImplementedException.class,
             InvalidValueRangeConfiguration.class,
             IllegalValueUnitException.class,
-            PhenomenonTypeNotFound.class,
-            InvalidValueRangeBusinessRuleType.class,
             RuntimeException.class
     })
     public ResponseEntity<CustomErrorResponse> customHandleNotFound(Exception ex, WebRequest request) {

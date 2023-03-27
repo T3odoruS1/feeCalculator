@@ -7,7 +7,6 @@ import com.fujitsu.feeCalculator.Domain.Helpers.EnumLabelMapper;
 import com.fujitsu.feeCalculator.Domain.PhenomenonBusinessRule;
 import com.fujitsu.feeCalculator.Domain.RegionalBaseFeeBusinessRule;
 import com.fujitsu.feeCalculator.Domain.ValueRangeBusinessRule;
-import com.fujitsu.feeCalculator.Exceptions.InvalidValueRangeBusinessRuleType;
 import com.fujitsu.feeCalculator.Services.WeatherService.Database.BusinessRuleService;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
@@ -98,8 +97,4 @@ public class ConfigurationController {
         service.deleteValueRangeBusinessRule(id);
     }
 
-    private void validateUnitType(String type, ValueRangeBusinessRule rule){
-        EValueUnit unit = EnumLabelMapper.getValueUnitFromString(type);
-        if(!unit.equals(rule.getValueUnit())) throw new InvalidValueRangeBusinessRuleType();
-    }
 }
